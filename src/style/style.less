@@ -1,0 +1,4162 @@
+.radiuts(@radius){
+    -moz-border-radius: @radius;
+    -webkit-border-radius: @radius;
+    border-radius: @radius;
+}
+
+.shadow(@a,@b,@c,@e){
+    -moz-box-shadow:@a @b @c @e;
+    -webkit-box-shadow:@a @b @c @e;
+    box-shadow:@a @b @c @e;
+}
+.radiuts(@radius){
+    -moz-border-radius: @radius;
+    -webkit-border-radius: @radius;
+    border-radius: @radius;
+}
+.transition(@attr,@time,@ea){
+    -webkit-transition:@attr @time @ea;
+    transition: @attr @time @ea;
+    -moz-transition:@attr @time @ea;
+    -o-transition:@attr @time @ea;
+}
+.bgcolor(@color){
+    background-color:@color;
+}
+.boxv(@bv){
+    -moz-box-flex:@bv;
+    -webkit-box-flex:@bv;
+    box-flex:@bv;
+}
+.hide{
+    display:none!important;
+}
+
+
+
+
+.weui-tabbar{
+    position: fixed;
+}
+
+.index{
+    height: 100%;
+    -webkit-overflow-scrolling: touch;
+    padding-top: 72px;
+    background: #f2f2f7;
+    .write{
+        width: 1.4rem;
+        height: 1.4rem;
+        position: fixed;
+        right:0.4rem;
+        bottom:4.533333rem;
+    }
+    .write a{
+        width: 1.1rem;
+        height: 1.1rem;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%,-50%);
+        -webkit-transition: all 0.5s ease;
+        &.a1{
+            -webkit-transform: translate(-1.3rem,-2.3rem) scale(1.2,1.2);
+            -webkit-transition:all 0.3s ease 0s;
+        }
+        &.a2{
+            -webkit-transform: translate(-2.2rem,-0.8rem) scale(1.2,1.2);
+             -webkit-transition:all 0.3s ease 0.2s;
+        }
+        &.a3{
+            -webkit-transform: translate(-2rem,0.9rem) scale(1.2,1.2);
+             -webkit-transition:all 0.3s ease 0.4s;
+        }
+    }
+
+    .wpic{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+    }
+    .wz{
+        position: absolute;
+        width: 1.4rem;
+        height: 1.4rem;
+        z-index: 99;
+        .wzpic{
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
+.mysign,.index{
+    .list{
+        dd{
+            .title,.tag{
+                padding: 0 0.4rem;
+            }
+        }
+    }
+}
+
+
+/*===下拉刷新组件===*/
+.dropload-layer{height:0;overflow:hidden;line-height:50px;text-align:center;-webkit-transition:.4s;transition:.4s;position: relative}
+.dropload-layer .inner{position: absolute;left: 0;right: 0;bottom: 0;}
+
+.dropload-layer .down{display:inline-block}
+.dropload-layer .refresh,.dropload-layer .up{display:none}
+.dropload-layer .arrow{display:inline-block;width:20px;height:20px;margin-right:4px;vertical-align:middle;-webkit-transition:.4s;transition:.4s;-webkit-transform:rotate(0deg) translate3d(0,0,0);transform:rotate(0deg) translate3d(0,0,0);background-size:13px 20px;background:url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2026%2040'%3E%3Cpolygon%20points%3D'9%2C22%209%2C0%2017%2C0%2017%2C22%2026%2C22%2013.5%2C40%200%2C22'%20fill%3D'%238c8c8c'%2F%3E%3C%2Fsvg%3E") no-repeat center;}
+.dropload-layer .loader{display:none;margin-right:4px;width:20px;height:20px;vertical-align:middle;animation:rotate 1s linear infinite forwards; -webkit-animation:rotate 1s linear infinite forwards; }
+.dropload-layer .loader:after{        -webkit-animation: load 1.2s infinite linear;
+display:block;width:100%;height:100%;content:"";background-size:cover;background:url("data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D'0%200%20120%20120'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20xmlns%3Axlink%3D'http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink'%3E%3Cdefs%3E%3Cline%20id%3D'l'%20x1%3D'60'%20x2%3D'60'%20y1%3D'7'%20y2%3D'27'%20stroke%3D'%236c6c6c'%20stroke-width%3D'11'%20stroke-linecap%3D'round'%2F%3E%3C%2Fdefs%3E%3Cg%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(30%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(60%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(90%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(120%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(150%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.37'%20transform%3D'rotate(180%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.46'%20transform%3D'rotate(210%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.56'%20transform%3D'rotate(240%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.66'%20transform%3D'rotate(270%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.75'%20transform%3D'rotate(300%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.85'%20transform%3D'rotate(330%2060%2C60)'%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E") no-repeat center;}
+
+.pull-up .down,.refreshing .down{display:none}
+.pull-up .arrow{display:inline-block;-webkit-transform:rotate(180deg) translate3d(0,0,0);transform:rotate(180deg) translate3d(0,0,0)}
+.pull-up .up{display:inline-block}
+.pull-down .arrow{display:inline-block}
+.pull-down .down{display:inline-block}
+.touching .dropload-layer{-webkit-transition: 0s;transition: 0s;}
+
+/*加载中*/
+.refreshing .dropload-layer{height: 50px;}
+.refreshing .arrow{display:none}
+.refreshing .loader{display:inline-block}
+.refreshing .refresh{display:inline-block}
+
+@-webkit-keyframes load {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+.wrapper{
+    max-width: 750px;
+    width: 100%;
+    min-height: 100%;
+    margin: 0 auto;
+    background: #f2f2f7;
+    position: relative;
+    .bottomText{
+        font-size: 0.373333rem;
+        text-align: center;
+        color:rgb(119,119,119);
+        margin: 0.4rem 0;
+        padding-bottom: 0.4rem;
+    }
+}
+
+.contacts{
+    min-height: 100%;
+    background: #fff;
+    .title{
+        padding:0.4rem;
+        text-align:center;
+        font-size:15px;
+        color:rgb(51,51,51);
+        border-bottom:1px solid #f1f1f1;
+        -webkit-box-pack:justify;
+    }
+
+    .title span:last-of-type{
+        color:rgb(153,153,153);
+        font-size:13px;
+    }
+
+    .title span:first-of-type{
+        width: 65%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        text-align: left;
+    }
+}
+
+
+.legalize{
+
+    background-color: #efeff4;
+    min-height: 100%;
+
+
+    .listPeoper{
+        margin-top: 0.32rem;
+        background-color: #fff;
+        margin-bottom: 0.32rem;
+    }
+
+    .ps{
+        position: relative;
+        width: 3.866667rem;
+        height: 3.5rem;
+        .psfile{
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 5;
+            opacity: 0;
+            width: 100%;
+            height: 2.666667rem;
+            input{
+                width: 100%;
+                height: 100%;
+                display:block;
+            }
+        }
+    }
+
+    .professionInput{
+        position: relative;
+        width: 70%;
+        height: 100%;
+        a{
+            width: 100%;
+            display: block;
+            height: 100%;
+            position: absolute;
+            z-index: 5;
+            top:0;
+            left: 0;
+        }
+        .profession{
+            width: 100%;
+            display: block;
+            height: 100%;
+            position: absolute;
+            z-index: 1;
+            top:0;
+            left: 0;
+        }
+    }
+
+    .line{
+        width:100%;
+        margin-left: 0.4rem;
+        height:1.173333rem;
+        display:-webkit-box;
+        -webkit-box-align:center;
+        border-bottom:1px solid #d9d9d9;
+        -webkit-box-sizing:border-box;
+        overflow:hidden;
+    }
+
+    .line span{
+        color:#353535;
+        font-size:14px;
+        width:1.6rem;
+        display:block;
+    }
+
+    .place{
+        color:#cccccc;
+        font-size:14px;
+    }
+
+    .styleIp{
+        color:rgb(204,204,204);
+        font-size: 14px;
+        color:#000;
+        width:5.066667rem;
+        height: 100%;
+
+    }
+
+    .btn{
+        border:1px solid #1d8ae5;
+        border-radius:0.613333rem;
+        width: 2.133333rem;
+        height: 0.666667rem;
+        font-size: 13px;
+        color:#1d8ae5;
+        display:block;
+        line-height: 0.666667rem;
+        text-align: center;
+        margin-left: 0.266667rem;
+        background: #fff;
+    }
+
+    .submits{
+        background-color:#1d8ae5;
+        margin:0.4rem;
+        border-radius:6px;
+        font-size:18px;
+        color:#fff;
+        background-color:#1d8ae5;
+        margin-top: 1.333333rem!important;
+    }
+
+    .pick{
+        -webkit-box-flex:1;
+    }
+
+    .picker{
+        color:rgb(204,204,204);
+        font-size: 14px;
+    }
+
+    .active{
+        color:#000;
+    }
+
+    .industry{
+        position: relative;
+    }
+
+    .industry:after{
+        content: '';
+        background: url(http://img.pengt.com/static/images/16@2x.png) no-repeat;
+        width: 0.213333rem;
+        height: 0.346667rem;
+        background-size: 100%;
+        position: absolute;
+        top: 50%;
+        right: 0.84rem;
+        -webkit-transform: translate(0,-50%) rotate(90deg);
+    }
+
+    .title{
+        font-size: 14px;
+        color:rgb(51,51,51);
+        padding:0.426667rem 0.426667rem 0.426667rem 0;
+        margin-left: 0.426667rem;
+        border-bottom: 1px solid #d9d9d9;
+    }
+
+    .title span{
+        display: block;
+    }
+
+    .liner{
+        width: 0.093333rem;
+        height: 0.4rem;
+        background-color: #097bff;
+        display: block;
+        margin-right: 0.2rem;
+    }
+
+    .Mypic{
+        overflow: hidden;
+        background-color: #fff;
+    }
+
+    .add{
+        width: 3.866667rem;
+        height: 2.666667rem;
+        border-radius: 0.066667rem;
+        border:1px dashed #c2c2c2;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 3;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        &.Zindex{
+            &:before{
+                opacity:0;
+            };
+
+        }
+    }
+
+    .add:before{
+        content: '';
+        background: url(http://img.pengt.com/static/images/37@2x.png) no-repeat;
+        background-size: 100%;
+        width: 0.946667rem;
+        height: 1.0rem;
+        position: absolute;
+        top:50%;
+        left: 50%;
+        -webkit-transform: translate(-50%,-50%);
+    }
+
+    .pics{
+        padding: 0.4rem 0.666667rem 0.1rem;
+        overflow: hidden;
+    }
+
+    .add1{
+        margin-right: 0.906667rem;
+    }
+
+    .images-image{
+        width: 3.866667rem;
+        height: 2.666667rem;
+        z-index:3;
+        position: relative;
+    }
+
+    .p{
+        text-align: center;
+        font-size: 12px;
+        color: rgb(135,135,135);
+        position: absolute;
+        top: 3rem;
+        overflow: hidden;
+
+        left: 50%;
+        -webkit-transform: translate(-50%,0);
+    }
+
+    .tip{
+        font-size: 13px;
+        color: rgb(167,167,167);
+        vertical-align:middle;
+    }
+
+    .tipP{
+        margin: 0.426667rem 0.426667rem 0 0.426667rem;
+    }
+
+    .icon{
+        width: 0.253333rem;
+        height: 0.333333rem;
+        margin-right: 0.213333rem;
+        vertical-align:middle;
+    }
+
+    .industry{
+        border:none;
+    }
+
+}
+
+
+
+.release{
+    .namecard{
+        margin: 0 0 0.266667rem 0;
+        background-color: #fff;
+    }
+
+
+    .cardbox{
+        padding: 0.4rem 0 0px 0.4rem;
+        background-color: #fff;
+        border-bottom: 1px solid #f1f1f1;
+        -webkit-box-align:start;
+
+    }
+
+    .cardpic{
+        width: 1.733333rem;
+        height: 1.733333rem;
+    }
+
+    .pic{
+        width: 1.733333rem;
+        height: 1.733333rem;
+        border-radius: 5px;
+        margin-right: 0.333333rem;
+    }
+
+    .cardinput{
+
+        border-bottom: 1px solid #f1f1f1;
+    }
+
+    .cardinput:last-of-type{
+        border-bottom: none;
+    }
+
+    .input{
+        font-size: 15px;
+        color:#333;
+
+    }
+
+    .names{
+        padding-bottom: 0.266667rem;
+    }
+
+    .tels{
+        padding-top: 0.266667rem;
+        padding-bottom: 0.266667rem;
+        font-size:15px;
+
+    }
+
+    .tels .tel{
+
+        width: 4.533333rem;
+    }
+
+    .codes{
+        padding-top:0.266667rem;
+        font-size:15px;
+
+    }
+
+    .sendCode{
+        color:#258ee6!important;
+        font-size: 14px;
+        width: 2.4rem;
+        height: 0.666667rem;
+        border-radius: 0.333333rem;
+        text-align: center;
+        line-height: 0.666667rem;
+        border:1px solid #258ee6;
+    }
+
+
+    .form{
+        background-color: #fff;
+    }
+
+    .parIn{
+        margin-left: 0.4rem;
+        border-bottom: 1px solid #f1f1f1;
+        padding: 0.4rem 0;
+    }
+
+    .placeholderStyle{
+        color:#cccccc;
+        font-size: 14px;
+    }
+
+    .t{
+        color:#777;
+        font-size: 15px;
+        margin-right: 0.733333rem;
+    }
+    .releaseUploader{
+        padding-left: 0.4rem;
+    }
+    .stip{
+        font-size: 13px;
+        color: rgb(167,167,167);
+        vertical-align:middle;
+    }
+
+    .stipP{
+        margin: 0.426667rem 0.426667rem 0 0.426667rem;
+    }
+    .sicon{
+        width: .253333rem;
+        height: .333333rem;
+        margin-right: .213333rem;
+        vertical-align: middle;
+    }
+    background:#efeff4;
+    min-height: 100%;
+    padding-bottom: 0.4rem;
+    .gallerytitle{
+        padding: 0.4rem;
+    }
+    .dateInput,.addressInput,.numberInput{
+        position: relative;
+        width: 70%;
+        height: 26px;
+        a{
+            width: 100%;
+            display: block;
+            height: 100%;
+            position: absolute;
+            z-index: 5;
+            top:0;
+            left: 0;
+        }
+        .dates,.address,.number{
+            width: 100%;
+            display: block;
+            height: 100%;
+            position: absolute;
+            z-index: 1;
+            top:0;
+            left: 0;
+        }
+    }
+
+    .picker{
+        color: #000;
+    }
+
+    .p{
+        padding:0.426667rem 0.426667rem 0.426667rem 0;
+        margin-left: 0.426667rem;
+        border-bottom: 1px solid #d9d9d9;
+        -webkit-box-pack:justify;
+        position: relative;
+    }
+
+    .pk:after{
+        content: '';
+        background: url(http://img.pengt.com/static/images/16@2x.png) no-repeat;
+        width: 0.213333rem;
+        height: 0.346667rem;
+        background-size: 100%;
+        position: absolute;
+        top: 50%;
+        right: 0.4rem;
+        -webkit-transform: translate(0,-50%);
+    }
+
+    .pick{
+        width:4.266667rem;
+        height: 0.693333rem;
+        line-height: 0.693333rem;
+    }
+
+    .place{
+        font-size: 14px;
+        color:rgb(194,194,194);
+    }
+
+    .text{
+        color: rgb(136,136,136);
+        text-align: right;
+        -webkit-box-flex:1;
+    }
+
+    .picker{
+        font-size: 14px;
+        color: rgb(136,136,136);
+        text-align: right;
+        padding-right: 0.426667rem;
+    }
+
+    .relaaseView{
+        background-color: #fff;
+        border-bottom: 1px solid #d9d9d9;
+        input{
+            height: 26px;
+        }
+    }
+
+    .bk{
+        font-size: 14px;
+        color: rgb(136,136,136);
+    }
+
+    .last{
+        border:none;
+    }
+
+    .t{
+        padding-left:0.426667rem;
+    }
+
+    .picer{
+        margin-top: 0.4rem;
+        background-color: #fff;
+        overflow: hidden;
+        padding-bottom: 0.426667rem;
+    }
+
+    .title{
+        font-size: 14px;
+        color:rgb(51,51,51);
+        padding:0.426667rem 0.426667rem 0.426667rem 0;
+        margin-left: 0.426667rem;
+        border-bottom: 1px solid #d9d9d9;
+    }
+
+    .textStyle{
+        font-size: 14px;
+        color:rgb(194,194,194);
+        height: 1.333333rem;
+    }
+
+    .title span{
+        display: block;
+    }
+
+    .line{
+        width: 0.093333rem;
+        height: 0.4rem;
+        background-color: #097bff;
+        display: block;
+        margin-right: 0.2rem;
+    }
+
+    .area{
+        padding:0.426667rem;
+        margin-bottom: 0.533333rem;
+        width: 100%;
+        color: rgb(136,136,136);
+        font-size: 14px;
+
+    }
+
+    .addPic{
+        padding-left:0.426667rem;
+        padding-top:0.4rem;
+        overflow:hidden;
+    }
+
+    .mr20{
+        margin-right: 0.266667rem;
+    }
+
+    .images-image{
+        width: 1.8rem;
+        height: 1.8rem;
+    }
+
+
+    .bgImg{
+        width: 0.946667rem;
+        height: 0.96rem;
+    }
+
+    .picBox i {
+        position: absolute;
+        right: -0.28rem;
+        top:-0.28rem;
+        width:0.56rem;
+        height: 0.56rem;
+        background: url(http://img.pengt.com/static/images/29@2x.png) no-repeat;
+        background-size: 100%;
+    }
+
+    .picBox{
+        width: 1.8rem;
+        height: 1.8rem;
+        position: relative;
+        margin-right: 0.466667rem;
+        margin-bottom:0.4rem;
+        margin-top:0.266667rem;
+    }
+
+    .submits{
+        background-color:#1d8ae5;
+        margin:0.4rem 0.4rem 1.066667rem 0.4rem;
+        border-radius:6px;
+        font-size:18px;
+        color:#fff;
+    }
+
+    .bgAdd{
+        padding: 0.4rem;
+        width: 1.8rem;
+        height: 1.8rem;
+        border: 1px dashed #efeff4;
+        margin-bottom: .4rem;
+        margin-top: .266667rem;
+    }
+
+    .sp{
+        font-size: 14px;
+        color:rgb(53,53,53);
+    }
+
+    .w{
+        width:4.0rem;
+    }
+
+    .winput{
+        width:2.666667rem;
+    }
+
+}
+
+.submit{
+    background: #fff;
+    .pic{
+        margin:1.333333rem auto 0.56rem auto;
+        width: 1.333333rem;
+        height: 1.333333rem;
+        display: block;
+    }
+
+    .t1{
+        font-size: 17px;
+        color:#000;
+        margin-bottom: 0.4rem;
+        text-align: center;
+    }
+
+    .t2{
+        margin-bottom: 0.106667rem;
+    }
+
+    .t2,.t3{
+        font-size: 13px;
+        color:rgb(135,135,135);
+        text-align: center;
+    }
+
+    .t3{
+        margin-bottom: 0.266667rem;
+    }
+
+    .back{
+        background: #1d8ae5;
+        color:#fff;
+        margin: 0.4rem;
+        border:1px solid #177fd5;
+        border-radius:0.106667rem;
+    }
+
+    .hover{
+        background: #1982d9;
+    }
+}
+
+.bottomText{
+    font-size: 14px;
+    text-align: center;
+    color:rgb(119,119,119);
+    margin: 0.4rem 0;
+    padding-bottom: 0.4rem;
+}
+
+.listText{
+    text-align: center;
+    font-size: 15px;
+    color:rgb(153,153,153);
+    margin-top: 0.4rem;
+}
+
+.commit{
+
+    &.mysign{
+        background-color: #f2f2f7
+    }
+
+    &.detail{
+        background-color:#f2f2f7;
+        .list-box{
+            dd{
+                .detailed{
+                    border-bottom: 1px solid #f1f1f1;
+                }
+            }
+        }
+
+        .refuse:before{
+            content: '';
+            background: url(http://img.pengt.com/static/images/icon9.png) no-repeat;
+            width: 1.653333rem;
+            height: 1.413333rem;
+            background-size: 100%;
+            position: absolute;
+            top: 50%;
+            right: 0.933333rem;
+            -webkit-transform: translate(0,-50%);
+        }
+        .title{
+            height: 1.173333rem;
+            background-color: #fff;
+            position: relative;
+            padding-left: 0.4rem;
+            border-bottom:1px solid #f1f1f1;
+        }
+
+        .bg{
+            background: url(http://img.pengt.com/static/images/40@2x.png);
+            background-size: 100%;
+            display: block;
+            width: 0.306667rem;
+            height: 0.373333rem;
+            margin-right: 0.266667rem;
+        }
+
+
+
+        .t1{
+            margin-bottom:0.266667rem;
+        }
+
+        .clr{
+            color:rgb(253,145,38)!important;
+        }
+        .list-box{
+            background-color:#fff;
+            margin-bottom:0.266667rem;
+            padding-left:0.4rem;
+        }
+        .ask{
+            height: 1.173333rem;
+            background-color: #fff;
+            padding: 0.186667rem 0;
+            -webkit-box-sizing:border-box;
+            -webkit-box-pack:center;
+        }
+
+        .a1{
+            margin-right: 0.56rem;
+            border:1px solid #dedddd;
+            border-radius: 6px;
+            padding:0.173333rem 0.133333rem;
+            background-color: #fff;
+            color: rgb(135,135,135);
+            font-size: 12px;
+        }
+
+        .a2{
+
+            border:1px solid #167ed5;
+            border-radius: 6px;
+            padding:0.173333rem 0.133333rem;
+            background-color: #258ee6;
+            color: #fff;
+            font-size: 12px;
+        }
+    }
+    &.signsize{
+        min-height: 100%;
+        position: relative;
+        background: #fff;
+        .dd{
+            .detailed{
+                border-top: 1px solid #f1f1f1;
+                border-bottom: none;
+            }
+
+        }
+        .number{
+            height:1.173333rem;
+            width: 100%;
+            padding:0 0.426667rem;
+        }
+
+        .num-icon{
+            width: 0.426667rem;
+            height: 0.333333rem;
+            display: block;
+            margin-right: 0.293333rem;
+        }
+        .number span{
+            display: block;
+            color:rgb(51,51,51);
+            font-size: 14px;
+        }
+
+    }
+
+    &.sign{
+        background:url(http://img.pengt.com/static/images/bg1.png) 0 0 #f2f2f7 no-repeat;
+        background-size:100%;
+        border-top:0.466667rem solid #1d8ae5;
+        padding-bottom: 0.4rem;
+    }
+    .nav{
+        font-size: 13px;
+        color:rgb(29,138,229);
+    }
+
+    .dd{
+        background: #fff;
+        &:last-of-type .detailed{
+            border-bottom:none;
+        };
+
+        &.despar{
+            background-color: #fff;
+            border-radius: 0.133333rem;
+            padding:0px 0.4rem 0;
+            margin:0.2rem 0.4rem 0.4rem 0.4rem;
+            box-shadow:0px 3px 3px #DDDDDD;
+
+        }
+        .tag{
+            height: 1.146667rem;
+            .const{
+                font-size: 12px;
+                color: rgb(247,86,74);
+
+            }
+            .tag-address{
+                span{
+                    font-size: 13px;
+                    color:rgb(119,119,119);
+                    font-weight: normal;
+
+                    &.first{
+                        margin-right:0.333333rem;
+                    }
+                }
+                .text{
+                   &:before{
+                        content:'';
+                        background-size:100%;
+                        background-repeat:no-repeat;
+                        display:inline-block;
+                        margin-right:0.133333rem;
+                        display: block;
+
+                    };
+                    &.address:before{
+                        background-image:url(http://img.pengt.com/static/images/icon1.png);
+                        width:0.306667rem;
+                        height:0.373333rem;
+                    }
+                    &.size:before{
+                        background-image:url(http://img.pengt.com/static/images/icon2.png);
+                        width:0.426667rem;
+                        height:0.333333rem;
+                    }
+
+                }
+            }
+        }
+        .detailed{
+            padding: 0.426667rem 0;
+            margin-left: 0.4rem;
+            border-bottom:1px solid #f1f1f1;
+            position: relative;
+
+            i{
+                background: url(http://img.pengt.com/static/images/icon6.png) no-repeat;
+                width: 0.8rem;
+                height: 0.8rem;
+                background-size: 100%;
+                position: absolute;
+                right: 0;
+                top: 0;
+            }
+            .firm-lp{
+                font-size: 12px;
+                color: rgb(153,153,153);
+                margin-top: 0.216667rem;
+            }
+            .pic{
+                width: 1.133333rem;
+                height: 1.133333rem;
+                .radiuts(3px);
+                margin-right: 0.266667rem;
+            }
+            .firm{
+                .name{
+                    font-size: 14px;
+                    color: rgb(51,51,51);
+
+                }
+                .line{
+                    width: 1px;
+                    height: 0.293333rem;
+                    background: #999;
+                    margin: 0 0.16rem;
+                }
+                .position{
+                    font-size: 12px;
+                    color: rgb(153,153,153);
+                    margin-right: 0.266667rem;
+                }
+                .type1{
+                    color:#fff;
+                    .radiuts(2px);
+                    width: 0.8rem;
+                    height: 0.4rem;
+                    background: #58b6fb;
+                    margin-right: 0.16rem;
+                    text-align: center;
+                    line-height: 0.4rem;
+
+                }
+                .type2{
+                    color:#fff;
+                    .radiuts(2px);
+                    width: 0.8rem;
+                    height: 0.4rem;
+                    background: #ffb264;
+                    margin-right: 0.16rem;
+                    text-align: center;
+                    line-height: 0.4rem;
+                }
+                .type3{
+                    background: url(http://img.pengt.com/static/images/icon4.png) no-repeat;
+                    width: 0.533333rem;
+                    height: 0.4rem;
+                    background-size: 100% 100%;
+                    margin-right: 0.16rem;
+                }
+                .type4{
+                    background: url(http://img.pengt.com/static/images/icon5.png) no-repeat;
+                    width: 0.506667rem;
+                    height: 0.386667rem;
+                    background-size: 100% 100%;
+                    display:block;
+                    margin-right: 0.16rem;
+
+                }
+            }
+        }
+        .title{
+            height: 1.2rem;
+            width: 100%;
+            .name{
+                color:rgb(51,51,51);
+                font-size:15px;
+                overflow: hidden;
+                text-overflow:ellipsis;
+                white-space: nowrap;
+                width: 67%;
+            }
+            .time{
+                color:rgb(153,153,153);
+                font-size: 13px;
+            }
+        }
+    }
+
+    .type{
+        display:-webkit-box;
+        -webkit-box-align:center;
+    }
+
+    .btnT{
+        width:0.8rem;
+        height:0.4rem;
+        font-size:12;
+        color:#fff;
+        border-radius: 0.026667rem;
+        text-align: center;
+        line-height: 0.4rem;
+        display:block;
+        margin-right: 0.16rem;
+    }
+
+
+    .listPeoper{
+        background-color:#fff;
+        overflow:hidden;
+        margin-bottom: 0.266667rem;
+    }
+
+    .desHid{
+        background-color:#fff;
+        overflow:hidden;
+        margin-bottom: 0.266667rem;
+    }
+
+    .hidTitle,.listTitle{
+        padding:0.4rem 0.4rem 0.4rem 0;
+        color:#f7564a;
+        display:block;
+        margin-left: 0.4rem;
+        font-size:14px;
+        border-bottom:1px solid #f1f1f1;
+    }
+
+    .listTitle{
+        color:#333;
+    }
+
+    .hidText{
+        padding:0.4rem 0.4rem 0 0.4rem;
+        word-break:break-all;
+        display:-webkit-box;
+        -webkit-box-orient:vertical;
+        overflow:hidden;
+        font-size:13px;
+        color:#333;
+        line-height:0.533333rem;
+        margin-bottom:0.4rem;
+        text-indent: 2em;
+
+        &.active{
+            -webkit-line-clamp: 4;
+        }
+    }
+
+    .hidtoggle{
+        -webkit-line-clamp:4;
+    }
+
+    .hidDetail{
+        text-align:center;
+        padding:0.4rem;
+        font-size:13px;
+        color:rgb(153,153,153);
+        font-weight:bold;
+        display:-webkit-box;
+        -webkit-box-pack:center;
+        -webkit-box-align:center;
+        border-top:1px solid #f1f1f1;
+        &.active:after{
+            -webkit-transform:rotate(180deg);
+        }
+    }
+
+    .hidDetail:after{
+        content:'';
+        background:url(http://img.pengt.com/static/images/icon3.png) no-repeat;
+        background-size:100%;
+        width:0.346667rem;
+        height:0.213333rem;
+        display:block;
+        margin-left: 0.266667rem;
+
+    }
+
+    .link{
+        color:#1d8ae5;
+    }
+
+    .line{
+        width:100%;
+        margin-left: 0.4rem;
+        height:1.173333rem;
+        display:-webkit-box;
+        -webkit-box-align:center;
+        border-bottom:1px solid #f1f1f1;
+        -webkit-box-sizing:border-box
+    }
+
+    .lastline{
+        border:none;
+    }
+
+    .line span{
+        color:#353535;
+        font-size:14px;
+        width:1.6rem;
+        display:block;
+    }
+
+    .place{
+        color:#cccccc;
+        font-size:14px;
+    }
+
+    .styleIp{
+        color:#000;
+        font-size: 14px;
+        width: 5.066667rem;
+
+    }
+
+    .btn{
+        border:1px solid #1d8ae5;
+        border-radius:0.613333rem;
+        width: 2.133333rem;
+        height:0.6rem;
+        font-size:12px;
+        color:#1d8ae5;
+        display:block;
+        line-height: 0.6rem;
+        text-align: center;
+        margin-left:0.266667rem;
+        background-color: #fff;
+    }
+
+
+    .submits,.it{
+        background-color:#1d8ae5;
+        margin:0.466667rem;
+        border-radius:0.106667rem;
+        font-size:18px;
+        color:#fff;
+    }
+
+    .submits{
+     margin:0.533333rem 0.533333rem 1.066667rem 0.533333rem;
+    }
+
+    .back{
+        background-color:#fff;
+        color:#000;
+        margin:0.4rem;
+        border-radius:0.106667rem;
+        font-size:18px;
+    }
+
+    .brnone{
+        position: relative;
+        margin-left: 0.4rem;
+    }
+
+    .of:last-of-type .brnone{
+        border:none;
+    }
+
+    .link:after{
+        display: none;
+    }
+
+    .with{
+        font-size: 18px;
+        color:#cbe1f7;
+        background: #7db9ed;
+        margin:0.666667rem 0.4rem;
+    }
+
+    .imglist{
+        display: block;
+        margin: 0.066667rem auto;
+        max-width: 90%;
+    }
+    .share{
+        background: rgba(0,0,0,0.7);
+        position:fixed;
+        width: 100%;
+        height: 100%;
+        top:0;
+        left: 0;
+        z-index: 5;
+    }
+
+    .share:before{
+        content: '';
+        background:url(http://img.pengt.com/static/images/share.png) no-repeat;
+        background-size: 100%;
+        width: 7.146667rem;
+        height: 4.6rem;
+        position: absolute;
+        top:0;
+        right: 0;
+    }
+
+    .share p{
+        color:#fff;
+        font-size: 14px;
+        text-align: center;
+        margin-bottom: 0.266667rem;
+    }
+
+    .share div{
+        margin-top:4.413333rem;
+    }
+
+}
+
+.my{
+    .head{
+        padding: 0.333333rem 0.4rem;
+        background-color: #fff;
+        margin-bottom: 0.266667rem;
+    }
+
+    .navs{
+        width: 100%;
+    }
+
+    .img,.pic{
+        border-radius: 3px;
+        width: 1.733333rem;
+        height:1.733333rem;
+        margin-right: 0.533333rem;
+    }
+
+    .picname{
+        color:#333;
+        font-size: 15px;
+        width: 5.333333rem;
+    }
+
+    .pictxt{
+        color:#999;
+        font-size: 13px;
+        margin-right: 0.333333rem;
+    }
+
+    .e,.pictext .i{
+        background:url(http://img.pengt.com/static/images1/icon8.png) no-repeat;
+        width:0.213333rem;
+        height:0.346667rem;
+        background-size:100% 100%;
+        display: block;
+    }
+
+    .list li{
+        display:block;
+        background:#fff;
+        padding:0.4rem 0 0 0;
+    }
+
+    .cont{
+        margin-left: 0.4rem;
+        padding-bottom: 0.4rem;
+        padding-right: 0.4rem;
+        border-bottom:1px solid #d9d9d9;
+    }
+
+    .icon{
+        background-size:100% 100%;
+        background-repeat:no-repeat;
+        margin-right:0.4rem;
+    }
+
+    .icon1{
+        background-image:url(http://img.pengt.com/static/images1/icon33.png);
+        width:0.426667rem;
+        height:0.333333rem;
+
+    }
+
+    .icon2{
+        background-image:url(http://img.pengt.com/static/images1/icon34.png);
+        width:0.426667rem;
+        height:0.4rem;
+
+    }
+
+    .icon3{
+        background-image:url(http://img.pengt.com/static/images/xicon8.png);
+        width:0.426667rem;
+        height:0.426667rem;
+
+    }
+
+    .icon4{
+        background-image:url(http://img.pengt.com/static/images/xicon9.png);
+        width:0.426667rem;
+        height:0.373333rem;
+
+    }
+
+    .icon5{
+        background-image:url(http://img.pengt.com/static/images/xicon10.png);
+        width:0.426667rem;
+        height:0.426667rem;
+    }
+
+    .icon6{
+        background-image:url(http://img.pengt.com/static/images/icon7.png);
+        width: 0.426667rem;
+        height: 0.373333rem;
+    }
+
+    .icon7{
+        background-image:url(http://img.pengt.com/static/images/32@2x.png);
+        width: 0.426667rem;
+        height: 0.373333rem;
+    }
+
+    .icon8{
+        background-image:url(http://img.pengt.com/static/images/icon8.png);
+       width: 0.426667rem;
+        height: 0.413333rem;
+    }
+
+    .mb{
+        margin-bottom: 0.266667rem;
+    }
+
+    .mb .cont{
+        border:none;
+    }
+
+    .sp{
+        color:#333;
+        font-size:15px;
+    }
+
+    .last{
+        border-bottom:none;
+    }
+}
+
+.cards{
+    .search{
+        position: fixed;
+        top: 0;
+        left:0;
+        padding: 0.266667rem 0.4rem;
+        width:100%;
+        background-color:#f2f2f7;
+
+    }
+
+
+
+    .search i{
+        background: url(http://img.pengt.com/static/images1/icon7.png) no-repeat;
+        width:0.266667rem;
+        height:0.266667rem;
+        background-size:100%;
+        display:block;
+        position:absolute;
+        top:50%;
+        left:40%;
+        -webkit-transform:translate(-50%, -50%);
+        z-index:3;
+    }
+
+    .searchFouru i{
+        left:1.0rem;
+        -webkit-transform:translate(0, -50%);
+    }
+
+    .searchInput{
+        background-color: #fff;
+        border-radius: 3px;
+        padding:0.2rem;
+        text-align: center;
+        font-size: 14px;
+        height:0.933333rem;
+        color:#333;
+        width:100%;
+        margin-right: 0.266667rem;
+        line-height: 0.933333rem;
+    }
+
+    .submit{
+        font-size:15px;
+        color:#666;
+        background: none;
+    }
+
+    .fouse{
+        padding:0.2rem 0.2rem 0.2rem 1.066667rem;
+        text-align:left;
+        color:#333;
+        width:8.266667rem;
+    }
+
+    .placeStyle{
+        font-size:14px;
+    }
+
+    .img{
+        width:1.133333rem;
+        height: 1.133333rem;
+        border-radius: 3px;
+    }
+
+    .module{
+        background-color: #fff;
+
+        margin-top: 1.333333rem;
+
+
+    }
+
+    .mess{
+        padding: 0.4rem 0.4rem 0.4rem 0;
+        margin-left: 0.4rem;
+    }
+
+    .name{
+        color:#333;
+        font-size: 14px;
+    }
+
+    .line{
+        background-color:#999;
+        width: 1px;
+        height: 0.373333rem;
+        margin:0 0.133333rem;
+    }
+
+    .position{
+        color:#999;
+        font-size: 12px;
+    }
+
+    .namepar{
+        margin-bottom: 0.266667rem;
+    }
+
+    .compy{
+        font-size: 13px;
+        color:#777;
+    }
+
+    .mo{
+        margin-left: 0.213333rem;
+    }
+
+    .giveCard{
+        background-color: #1d8ae5;
+        width: 2.8rem;
+        height: 0.8rem;
+        line-height: 0.8rem;
+        text-align: center;
+        color:#fff;
+        font-size: 14px;
+        border-radius: 3px;
+    }
+
+    .txt{
+        color:#999;
+        font-size: 14px;
+    }
+
+    .txt::after{
+        content: '';
+        background-image: url(http://img.pengt.com/static/images1/icon9.png);
+        background-size: 100%;
+        width: 0.213333rem;
+        height: 0.346667rem;
+        display: block;
+        margin-left: 0.2rem;
+    }
+
+    .letter{
+        font-size: 14px;
+        color:#999;
+        padding:0.133333rem 0.4rem;
+    }
+
+    .of{
+        background-color: #fff;
+        position: relative;
+    }
+
+    .of .mess{
+        border-bottom: 1px solid #f1f1f1;
+    }
+
+    .telimg{
+        width: 0.426667rem;
+        height: 0.426667rem;
+        position: absolute;
+        top:50%;
+        left: 50%;
+        -webkit-transform:translate(-50%, -50%);
+
+    }
+
+    .nav{
+        width:80%;
+    }
+
+    .tel{
+        width: 1.866667rem;
+        height: 100%;
+        position: absolute;
+        right: 0;
+        top: 0;
+        border-left: 1px solid #f1f1f1;
+    }
+
+    .close{
+        background-image: url(http://img.pengt.com/static/images1/icon11.png);
+        width: 0.4rem;
+        height: 0.4rem;
+        position: absolute;
+        top:50%;
+        right:1.733333rem;
+        -webkit-transform:translate(0, -50%);
+        background-size: 100%;
+        background-repeat: no-repeat;
+        z-index: 9;
+    }
+
+}
+
+.fbxq{
+    background-color:#f2f2f7;
+    .tip{
+        font-size: 13px;
+        color:#999;
+        margin: 0.4rem 0 2.666667rem 0.4rem;
+        line-height: 0.56rem;
+    }
+    .submits{
+        background-color:#1d8ae5;
+        border-radius:6px;
+        font-size:18px;
+        color:#fff;
+        background-color:#1d8ae5;
+        width: 90%;
+    }
+    .picker,.placeholderStyle{
+        color:#cccccc;
+        font-size: 12px;
+    }
+
+    .namecard{
+        margin: 0.266667rem 0;
+        background-color: #fff;
+    }
+
+    .cardbox{
+        padding: 0.4rem 0 0 0.4rem;
+        background-color: #fff;
+        border-bottom: 1px solid #f1f1f1;
+        -webkit-box-align:start;
+
+    }
+
+    .cardpic{
+        width: 1.733333rem;
+        height: 1.733333rem;
+    }
+
+    .pic{
+        width: 1.733333rem;
+        height: 1.733333rem;
+        border-radius: 3px;
+        margin-right: 0.333333rem;
+    }
+
+    .cardinput{
+
+        border-bottom: 1px solid #f1f1f1;
+    }
+
+    .cardinput:last-of-type{
+        border-bottom: none;
+    }
+
+    .input{
+        font-size: 15px;
+        color:#333;
+
+    }
+
+    .names{
+        padding-bottom: 0.266667rem;
+    }
+
+    .tels{
+        padding-top: 0.266667rem;
+        padding-bottom: 0.266667rem;
+        font-size:15px;
+
+    }
+
+    .tels .tel{
+
+        width: 4.533333rem;
+    }
+
+    .codes{
+        padding-top:0.266667rem;
+        font-size:15px;
+
+    }
+
+    .sendCode{
+        color:#258ee6;
+        font-size: 14px;
+        width: 2.4rem;
+        height: 0.666667rem;
+        border-radius: 0.333333rem;
+        text-align: center;
+        line-height: 0.666667rem;
+        border:1px solid #258ee6;
+    }
+
+    .form{
+        background-color: #fff;
+    }
+
+    .parIn{
+        margin-left: 0.4rem;
+        border-bottom: 1px solid #f1f1f1;
+        padding: 0.4rem 0;
+    }
+
+    .mess{
+        background: #fff;
+        padding-left: 0.4rem;
+    }
+
+    .b{
+        border-bottom: 1px solid #f1f1f1;
+
+    }
+
+    .l{
+        padding: 0.4rem 0;
+    }
+
+    .t{
+        color:#777;
+        font-size: 15px;
+        margin-right: 0.733333rem;
+    }
+
+    .submit{
+        color:#fff;
+        font-size: 18px;
+        background-color: #1d8ae5;
+        margin:  auto ;
+        width: 90%;
+    }
+
+    .br{
+        border:1px solid #1d8ae5;
+        border-radius: 3px;
+    }
+
+    .codeinput{
+        border-bottom: none;
+    }
+
+    .inpute{
+        border-bottom: none;
+    }
+
+    .area{
+        padding:0.4rem;
+        margin-bottom: 0.533333rem;
+        width: 100%;
+        color: rgb(136,136,136);
+        font-size: 14px;
+    }
+
+    .text{
+        margin-top: 0.266667rem;
+        background: #fff;
+        padding-bottom: 0.4rem;
+        margin-bottom: 1.333333rem;
+    }
+
+    .ta{
+        margin-left: 0.4rem;
+        padding: 0.4rem 0;
+        border-bottom: 1px solid #f1f1f1;
+        color:#353535;
+        font-size: 14px;
+
+    }
+
+    .addPic{
+        padding-left:0.426667rem;
+        padding-top:0.4rem;
+        overflow:hidden;
+    }
+
+    .mr20{
+        margin-right: 0.266667rem;
+    }
+
+    .images-image{
+        width: 1.666667rem;
+        height: 1.666667rem;
+    }
+
+
+    .bgImg{
+        width: 0.946667rem;
+        height: 0.96rem;
+    }
+
+    .picBox i {
+        position: absolute;
+        right: -0.28rem;
+        top:-0.28rem;
+        width:0.56rem;
+        height: 0.56rem;
+        background: url(http://img.pengt.com/static/images/29@2x.png) no-repeat;
+        background-size: 100%;
+    }
+
+    .picBox{
+        width: 1.666667rem;
+        height: 1.666667rem;
+        position: relative;
+        margin-right: 0.466667rem;
+        margin-bottom:0.4rem;
+        margin-top:0.266667rem;
+    }
+
+    .h{
+        color:#333;
+        font-size: 14px;
+    }
+
+    .bgAdd{
+        padding: 0.4rem;
+        border: 1px dashed #efeff4;
+    }
+
+    .fled{
+        background: #fff;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        padding: 0.266667rem 0;
+        width: 100%;
+    }
+
+    .c0{
+        color:#000;
+    }
+
+    .section{
+        position: relative;
+        width: 65%;
+        height: 0.346667rem;
+        a{
+            width: 100%;
+            display: block;
+            height: 100%;
+            position: absolute;
+            z-index: 5;
+            top: 0;
+            left: 0;
+        }
+        input{
+            width: 100%;
+            display: block;
+            height: 100%;
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            -webkit-box-flex: 1;
+            font-size: 15px;
+
+        }
+    }
+
+    .xi{
+        background: url(http://img.pengt.com/static/images/xicon15.png) no-repeat;
+        background-size: 100%;
+        width: 0.346667rem;
+        height: 0.213333rem;
+        position: absolute;
+        top:50%;
+        right:0.4rem;
+        -webkit-transform:translate(0, -50%);
+        z-index: 99;
+    }
+
+
+}
+
+.list{
+    dd{
+        background: #fff;
+        margin-bottom: 0.266667rem;
+        .tag{
+            height: 1.146667rem;
+            .const{
+                font-size: 12px;
+                color: rgb(247,86,74);
+
+            }
+            .tag-address{
+                span{
+                    font-size: 13px;
+                    color:rgb(119,119,119);
+                    font-weight: normal;
+
+                    &.first{
+                        margin-right:0.333333rem;
+                    }
+                }
+                .text{
+                   &:before{
+                        content:'';
+                        background-size:100%;
+                        background-repeat:no-repeat;
+                        display:inline-block;
+                        margin-right:0.133333rem;
+                        display: block;
+
+                    };
+                    &.address:before{
+                        background-image:url(http://img.pengt.com/static/images/icon1.png);
+                        width:0.306667rem;
+                        height:0.373333rem;
+                    }
+                    &.size:before{
+                        background-image:url(http://img.pengt.com/static/images/icon2.png);
+                        width:0.426667rem;
+                        height:0.333333rem;
+                    }
+
+                }
+            }
+        }
+        .detailed{
+            padding: 0.426667rem 0;
+            margin-left: 0.4rem;
+            border-top:1px solid #f1f1f1;
+            border-bottom:1px solid #f1f1f1;
+            position: relative;
+            i{
+                background: url(http://img.pengt.com/static/images/icon6.png) no-repeat;
+                width: 0.8rem;
+                height: 0.8rem;
+                background-size: 100%;
+                position: absolute;
+                right: 0;
+                top: 0;
+            }
+            .firm-lp{
+                font-size: 12px;
+                color: rgb(153,153,153);
+                margin-top: 0.216667rem;
+            }
+            .pic{
+                width: 1.133333rem;
+                height: 1.133333rem;
+                .radiuts(3px);
+                margin-right: 0.266667rem;
+            }
+            .firm{
+                .name{
+                    font-size: 14px;
+                    color: rgb(51,51,51);
+
+                }
+                .line{
+                    width: 1px;
+                    height: 0.293333rem;
+                    background: #999;
+                    margin: 0 0.16rem;
+                }
+                .position{
+                    font-size: 12px;
+                    color: rgb(153,153,153);
+                    margin-right: 0.266667rem;
+                }
+                .type1{
+                    color:#fff;
+                    .radiuts(2px);
+                    width: 0.8rem;
+                    height: 0.4rem;
+                    background: #58b6fb;
+                    margin-right: 0.16rem;
+                    text-align: center;
+                    line-height: 0.4rem;
+
+                }
+                .type2{
+                    color:#fff;
+                    .radiuts(2px);
+                    width: 0.8rem;
+                    height: 0.4rem;
+                    background: #ffb264;
+                    margin-right: 0.16rem;
+                    text-align: center;
+                    line-height: 0.4rem;
+                }
+                .type3{
+                    background: url(http://img.pengt.com/static/images/icon4.png) no-repeat;
+                    width: 0.533333rem;
+                    height: 0.4rem;
+                    background-size: 100% 100%;
+                    margin-right: 0.16rem;
+                }
+                .type4{
+                    background: url(http://img.pengt.com/static/images/icon5.png) no-repeat;
+                    width: 0.506667rem;
+                    height: 0.386667rem;
+                    background-size: 100% 100%;
+                    display:block;
+                    margin-right: 0.16rem;
+
+                }
+            }
+        }
+        .title{
+            height: 1.2rem;
+            width: 100%;
+            .name{
+                color:rgb(51,51,51);
+                font-size:15px;
+                width: 67%;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                width: 67%;
+            }
+            .time{
+                color:rgb(153,153,153);
+                font-size: 13px;
+            }
+        }
+    }
+}
+
+.share{
+    background: rgba(0,0,0,0.7);
+    position:fixed;
+    width: 100%;
+    height: 100%;
+    top:0;
+    left: 0;
+    z-index: 5;
+}
+.Msign{
+    .share:before{
+    content: '';
+    background:url(http://img.pengt.com/static/images/share.png) no-repeat;
+    background-size: 100%;
+    width: 7.146667rem;
+    height: 4.6rem;
+    position: absolute;
+    top:0;
+    right: 0;
+}
+}
+
+
+.share p{
+    color:#fff;
+    font-size: 15px;
+    text-align: center;
+    margin-bottom: 0.266667rem;
+}
+
+.share div{
+    margin-top:4.413333rem;
+}
+
+.weui-picker{
+    font-size: 16px;
+}
+
+.navtab{
+    width: 100%;
+}
+
+.navbar_item{
+    font-size: 15px;
+    color:#8f8f8f;
+    .boxv(1);
+    text-align:center;
+    padding: 0.4rem 0;
+}
+
+.navtab{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #fff;
+    z-index:99;
+}
+
+.pactive{
+    color:#188fe6;
+    font-size: 15px;
+    position: relative;
+    &:before{
+        content:'';
+        width: 40%;
+        height: 2px;
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        -webkit-transform: translate(-50%,0);
+        background: #188fe6;
+
+    };
+}
+
+.wz{
+    z-index:101;
+}
+
+.need{
+    .list{
+
+        dd{
+           .title{
+                padding: 0.4rem 0;
+                color:#333333;
+                font-size: 15px;
+                border-bottom: 1px solid #f1f1f1;
+            }
+        }
+    }
+
+    .list .of{
+        background-color: #fff;
+        padding-left: 0.4rem;
+        margin-bottom: 0.266667rem;
+    }
+
+
+
+
+
+    .title .b{
+        margin-left: 0.2rem;
+        font-size: 12px;
+        background-color: #ffb264;
+        padding: 0.066667rem;
+        border-radius: 3px;
+        color:#fff;
+
+    }
+
+    .icon1{
+        background: url(http://img.pengt.com/static/images/xicon1.png) no-repeat;
+
+
+    }
+
+    .icon2{
+        background: url(http://img.pengt.com/static/images/xicon2.png) no-repeat;
+    }
+
+    .icon3{
+        background: url(http://img.pengt.com/static/images/xicon4.png) no-repeat;
+    }
+
+    .icon4{
+        background: url(http://img.pengt.com/static/images/xicon5.png) no-repeat;
+    }
+
+    .ic{
+        text-indent: 0.133333rem;
+        background-size: 100%;
+        width: 1.56rem;
+        height: 0.573333rem;
+        text-align: center;
+        line-height: 0.586667rem;
+        color:#fff;
+        font-size: 12px;
+
+    }
+
+    .mtext{
+        padding: 0.4rem 0.4rem 0.4rem 0;
+        color:#777;
+        font-size: 14px;
+        line-height: 0.533333rem;
+
+    }
+
+    .size .i{
+        background: url(http://img.pengt.com/static/images/xicon3.png) no-repeat;
+        background-size: 100%;
+        width: 0.426667rem;
+        height: 0.333333rem;
+        margin-right: 0.133333rem;
+    }
+
+    .mtab1{
+        padding: 0 0.4rem 0.4rem 0;
+        border-bottom: 1px solid #f1f1f1;
+
+    }
+
+    .size .em{
+        color:#0a8be6;
+        font-size: 13px;
+    }
+
+    .size .s{
+        color:#777777;
+        font-size: 13px;
+    }
+
+    .date{
+        color:#999;
+        font-size: 13px;
+    }
+
+    .mtab2{
+        padding: 0.4rem 0.4rem 0.4rem 0;
+
+    }
+
+    .j .e{
+        color:#777777;
+        font-size: 13px;
+    }
+
+    .j .b{
+        color:#f85347;
+        font-size: 15px;
+        margin-left: 0.133333rem;
+    }
+
+    .d{
+        color:#777777;
+        font-size: 13px;
+    }
+
+    .l{
+        font-size: 15px;
+        margin-left: 0.133333rem;
+    }
+}
+
+.needdetail{
+    background:#f2f2f7;
+
+    .title{
+        padding: 0.4rem 0;
+        color:#333333;
+        font-size: 15px;
+        border-bottom: 1px solid #f1f1f1;
+    }
+
+    .modu{
+        overflow: hidden;
+    }
+
+    .modes{
+        padding-left: 0.4rem;
+        background: #fff;
+        margin-bottom: 0.266667rem;
+    }
+
+    .title .b{
+        margin-left: 0.2rem;
+        font-size: 12px;
+        background-color: #ffb264;
+        padding: 0.066667rem;
+        border-radius: 3px;
+        color:#fff;
+
+    }
+
+    .icon1{
+        background: url(http://img.pengt.com/static/images/xicon1.png) no-repeat;
+
+
+    }
+
+    .icon2{
+        background: url(http://img.pengt.com/static/images/xicon2.png) no-repeat;
+    }
+
+    .icon3{
+        background: url(http://img.pengt.com/static/images/xicon4.png) no-repeat;
+    }
+
+    .icon4{
+        background: url(http://img.pengt.com/static/images/xicon5.png) no-repeat;
+    }
+
+    .ic{
+        text-indent: 0.133333rem;
+        background-size: 100%;
+        width: 1.56rem;
+        height: 0.573333rem;
+        text-align: center;
+        line-height: 0.586667rem;
+        color:#fff;
+        font-size: 12px;
+    }
+
+    .address{
+        font-size: 13px;
+        color:#777;
+    }
+
+    .usermess{
+        margin-bottom: 0.16rem;
+    }
+
+    .userInfo{
+        padding: 0.4rem 0;
+        border-bottom: 1px solid #f1f1f1;
+        position: relative;
+    }
+
+    .Pic{
+        margin-right: 0.266667rem;
+    }
+
+    .usepic{
+        width: 1.066667rem;
+        height: 1.066667rem;
+        border-radius: 4px;
+    }
+
+    .name{
+        color:#333333;
+        font-size: 14px;
+    }
+
+    .line{
+        width: 1px;
+        height: 0.266667rem;
+        background-color: #999999;
+        margin: 0 0.133333rem;
+    }
+
+    .position{
+        font-size: 12px;
+        color:#999;
+        margin-right: 0.266667rem;
+    }
+
+    .type{
+        width: 0.8rem;
+        height: 0.4rem;
+        text-align: center;
+        line-height: 0.4rem;
+        color:#fff;
+        font-size: 12px;
+        border-radius: 5px;
+        margin-right: 0.133333rem;
+    }
+
+    .type1{
+        background-color: #5cb5fa;
+    }
+
+    .type2{
+        background-color: #feb366;
+    }
+
+    .icon{
+        background-image:url(http://img.pengt.com/static/images1/icon12.png);
+        width: 0.533333rem;
+        height: 0.4rem;
+        background-size: 100%;
+        display: block;
+        background-repeat: no-repeat;
+    }
+
+    .tab{
+        padding: 0.4rem 0.4rem 0.4rem 0;
+    }
+    .tab .b{
+        font-size: 15px;
+        color:#f7564a;
+        margin-right: 0.266667rem;
+    }
+
+    .tab .day{
+        font-size: 13px;
+        color:#777;
+    }
+
+    .tab .c{
+        font-size: 15px;
+    }
+
+    .tab .i{
+        background: url(http://img.pengt.com/static/images/xicon3.png) no-repeat;
+        background-size: 100%;
+        width: 0.426667rem;
+        height: 0.333333rem;
+        margin-right: 0.133333rem;
+    }
+
+    .tab .var{
+        font-size: 13px;
+        color:#1d89e5;
+    }
+
+    .tab .main{
+        font-size: 13px;
+        color:#777;
+    }
+
+    .detail{
+            background: #fff;
+        padding-bottom: 2.0rem;
+        padding-left: 0.4rem;
+    }
+
+    .dtitle{
+        padding: 0.4rem 0.4rem 0.4rem 0;
+        border-bottom: 1px solid #f1f1f1;
+    }
+
+    .dtitle .l{
+        font-size: 14px;
+        color:#333;
+    }
+
+    .dtitle .r{
+        font-size: 13px;
+        color:#999999;
+    }
+
+    .dtext{
+        padding: 0.4rem 0.4rem 0.4rem 0;
+        font-size: 14px;
+        color:#777;
+        line-height: 0.533333rem;
+    }
+
+    .imglist{
+        display: block;
+        margin: 0.266667rem auto;
+        max-width: 90%;
+        width: auto;
+    }
+
+    .link{
+        background: #f9f9f9;
+        padding: 0.266667rem 0.4rem;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+    }
+
+    .link .a{
+        width: 4.4rem;
+        height: 1.066667rem;
+        line-height: 1.066667rem;
+        text-align: center;
+        border:1px solid #1d8ae5;
+        border-radius: 5px;
+        font-size: 0.48rem;
+        color:#1d8ae5;
+    }
+
+    .link .b{
+        background-color: #1d8ae5;
+        color:#fff;
+        font-size: 18px;
+        width: 4.4rem;
+        height: 1.12rem;
+        line-height: 1.066667rem;
+        text-align: center;
+        border-radius: 5px;
+    }
+
+    .btm{
+        margin-top: 0.266667rem;
+        background-color: #fff;
+        padding-left: 0.4rem;
+    }
+
+    .btmp{
+        border-bottom: 1px solid #f1f1f1;
+        color:#333333;
+        font-size: 14px;
+        padding: 0.4rem 0;
+    }
+
+    .share{
+        position: fixed;
+        top:0;
+        left: 0;
+        z-index: 11;
+        background: rgba(0,0,0,0.7);
+        width: 100%;
+        height: 100%;
+    }
+
+    .share i{
+
+        background: url(http://img.pengt.com/static/images/share.png) no-repeat;
+        width: 6.84rem;
+        height: 5.626667rem;
+        position: absolute;
+        right:0.666667rem;
+        top:0.266667rem;
+        background-size: 100%;
+    }
+
+    .share p{
+        color:#fff;
+        font-size: 15px;
+        text-align: center;
+        margin-bottom: 0.266667rem;
+    }
+
+    .share div{
+        margin-top:4.413333rem;
+    }
+
+    .telimg{
+        width: 0.426667rem;
+        height: 0.426667rem;
+        position: absolute;
+        top:50%;
+        left: 50%;
+        -webkit-transform:translate(-50%, -50%);
+
+    }
+
+
+
+    .tel{
+        width: 1.866667rem;
+        height: 100%;
+        position: absolute;
+        right: 0;
+        top: 0;
+        border-left: 1px solid #f1f1f1;
+    }
+}
+
+.tendersuccess{
+    .sucess{
+        background-color: #fff;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    .pic{
+        margin:1.333333rem auto 0.56rem auto;
+        width: 1.333333rem;
+        height: 1.333333rem;
+        display: block;
+    }
+
+    .t1{
+        font-size: 17px;
+        color:#000;
+        margin-bottom: 0.4rem;
+        text-align: center;
+    }
+
+    .t2{
+        margin-bottom: 0.106667rem;
+    }
+
+    .t2,.t3{
+        font-size: 13px;
+        color:rgb(135,135,135);
+        text-align: center;
+    }
+
+    .t3{
+        margin-bottom: 0.266667rem;
+    }
+
+    .back{
+        background: #fff;
+        color:#fff;
+        margin: 1.2rem auto;
+        width: 4.48rem;
+        height: 1.066667rem;
+        line-height: 1.066667rem;
+        text-align: center;
+        color:#1d8ae5;
+        font-size: 18px;
+        border:1px solid #1d8ae5;
+        border-radius:0.106667rem;
+    }
+
+    .hover{
+        background: #1982d9;
+    }
+}
+
+.myb{
+
+    background: #efeff4;
+
+    .list{
+        margin-top: 0.266667rem;
+    }
+
+    .list .of{
+        background-color: #fff;
+        padding-left: 0.4rem;
+        margin-bottom: 0.266667rem;
+    }
+
+    .title{
+        padding: 0.4rem 0;
+        color:#333333;
+        font-size: 15px;
+        border-bottom: 1px solid #f1f1f1;
+    }
+
+
+
+    .title b{
+        margin-left: 0.2rem;
+        font-size: 12px;
+        background-color: #ffb264;
+        padding: 0.066667rem;
+        border-radius: 3px;
+        color:#fff;
+
+    }
+
+    .icon1{
+        background: url(http://img.pengt.com/static/images/xicon1.png) no-repeat;
+
+
+    }
+
+    .icon2{
+        background: url(http://img.pengt.com/static/images/xicon2.png) no-repeat;
+    }
+
+    .ic{
+        text-indent: 0.133333rem;
+        background-size: 100%;
+        width: 1.56rem;
+        height: 0.573333rem;
+        text-align: center;
+        line-height: 0.586667rem;
+        color:#fff;
+        font-size: 12px;
+    }
+
+    .mtext{
+        padding: 0.4rem 0.4rem 0.4rem 0;
+        color:#777;
+        font-size: 14px;
+        line-height: 0.533333rem;
+
+    }
+
+    .size i{
+        background: url(http://img.pengt.com/static/images/xicon3.png) no-repeat;
+        background-size: 100%;
+        width: 0.426667rem;
+        height: 0.333333rem;
+        margin-right: 0.133333rem;
+    }
+
+    .mtab1{
+        padding: 0 0.4rem 0.4rem 0;
+        border-bottom: 1px solid #f1f1f1;
+
+    }
+
+    .size .em{
+        color:#0a8be6;
+        font-size: 13px;
+    }
+
+    .size .s{
+        color:#777777;
+        font-size: 13px;
+    }
+
+    .date{
+        color:#999;
+        font-size: 13px;
+    }
+
+    .mtab2{
+        padding: 0.4rem 0.4rem 0.4rem 0;
+
+    }
+
+    .j .e{
+        color:#777777;
+        font-size: 13px;
+    }
+
+    .j .b{
+        color:#f85347;
+        font-size: 15px;
+        margin-left: 0.133333rem;
+    }
+
+    .d{
+        color:#777777;
+        font-size: 13px;
+    }
+
+    .l{
+        font-size: 15px;
+        margin-left: 0.133333rem;
+    }
+
+    .write{
+        width: 1.426667rem;
+        height:1.44rem;
+        position: fixed;
+        right:0.4rem;
+        bottom:1.333333rem;
+    }
+
+    .wt,.xq{
+        width: 0.826667rem;
+        height: 0.826667rem;
+        right:0.533333rem;
+        bottom:1.466667rem;
+    }
+
+    .over .e,.over .mtext,.over .b,.over .d,.over .em,.over .size,.over .date,.over .mtab2{
+        color:#999;
+    }
+
+    .po{
+        margin: 0.533333rem 0.666667rem;
+
+        position: relative;
+    }
+
+    .po .g{
+        border-top: 1px solid #cecece;
+        width: 100%;
+        position: absolute;
+        top:50%;
+        left: 0;
+    }
+
+    .po .optext{
+        padding: 0 0.2rem;
+        font-size: 13px;
+        color:#878787;
+        text-align: center;
+        background: #efeff4;
+        z-index: 5;
+        margin: 0 auto;
+        display: block;
+        position: relative;
+        width: 1.6rem;
+    }
+
+}
+
+.xqdetail,.morepeople{
+    background-color:#f2f2f7;
+    .top{
+        background: #fff;
+        padding: 0.2rem 0 0.4rem 0.4rem;
+        margin-bottom: 0.266667rem;
+    }
+
+    .telpic{
+        width: 0.426667rem;
+        height: 0.426667rem;
+    }
+
+    .list{
+        border-bottom: 1px solid #f1f1f1;
+    }
+
+    .more{
+        text-align: center;
+        font-size: 13px;
+        color:#999999;
+        padding: 0.4rem;
+        background: #fff;
+    }
+    .more a{
+        color: #999;
+    }
+    .more .e{
+        background: url(http://img.pengt.com/static/images/xicon15.png) no-repeat;
+        background-size: 100%;
+        width: 0.346667rem;
+        height: 0.213333rem;
+        margin-left: 0.266667rem;
+    }
+
+    .list .of{
+        background: #fff;
+        padding-left: 0.4rem;
+        display: block;
+        margin-bottom: 0.266667rem;
+    }
+
+    .list .of:last-of-type{
+        margin-bottom: 0;
+    }
+
+    .title{
+        margin-bottom: 0.333333rem;
+        color:#333333;
+        font-size: 15px;
+    }
+
+    .title b{
+        margin-left: 0.2rem;
+        font-size: 12px;
+        background-color: #ffb264;
+        padding: 0.066667rem;
+        border-radius: 3px;
+        color:#fff;
+
+    }
+
+    .bw{
+        color:#feb725;
+        font-size: 14px;
+        margin-right: 0.533333rem;
+    }
+
+    .my{
+        color:#f7564a;
+        font-size: 13px;
+        margin-right: 0.266667rem;
+    }
+
+    .a{
+        font-size: 12px;
+        color:#999999;
+    }
+
+    .icon1{
+        background: url(http://img.pengt.com/static/images/xicon1.png) no-repeat;
+
+    }
+
+    .icon2{
+        background: url(http://img.pengt.com/static/images/xicon2.png) no-repeat;
+    }
+
+    .icon3{
+        background: url(http://img.pengt.com/static/images/xicon4.png) no-repeat;
+    }
+
+    .icon4{
+        background: url(http://img.pengt.com/static/images/xicon5.png) no-repeat;
+    }
+
+    .ic{
+        text-indent: 0.133333rem;
+        background-size: 100%;
+        width: 1.56rem;
+        height: 0.573333rem;
+        text-align: center;
+        line-height: 0.586667rem;
+        color:#fff;
+        font-size: 12px;
+    }
+
+    .size{
+        background: #fff;
+        padding-left: 0.4rem;
+    }
+
+    .s{
+        padding: 0.4rem 0 0.4rem 0;
+        border-bottom: 1px solid #f1f1f1;
+        color:#474747;
+        font-size: 14px;
+    }
+
+    .userInfo{
+        padding: 0.4rem 0.4rem 0.4rem 0;
+    }
+
+    .Pic{
+        margin-right: 0.266667rem;
+    }
+
+    .usermess{
+        margin-bottom: 0.16rem;
+    }
+
+    .address{
+        font-size: 13px;
+        color:#777;
+    }
+
+    .usepic{
+        width: 1.066667rem;
+        height: 1.066667rem;
+        border-radius: 3px;
+    }
+
+    .name{
+        color:#333333;
+        font-size: 14px;
+    }
+
+    .line{
+        width: 1px;
+        height: 0.266667rem;
+        background-color: #999999;
+        margin: 0 0.133333rem;
+    }
+
+    .position{
+        font-size: 12px;
+        color:#999;
+        margin-right: 0.266667rem;
+    }
+
+    .type{
+        width: 0.8rem;
+        height: 0.4rem;
+        text-align: center;
+        line-height: 0.4rem;
+        color:#fff;
+        font-size: 12px;
+        border-radius: 3px;
+        margin-right: 0.133333rem;
+    }
+
+    .type1{
+        background-color: #5cb5fa;
+    }
+
+    .type2{
+        background-color: #feb366;
+    }
+
+    .icon{
+        background-image:url(http://img.pengt.com/static/images1/icon12.png);
+        width: 0.533333rem;
+        height: 0.4rem;
+        background-size: 100%;
+        display: block;
+        background-repeat: no-repeat;
+    }
+
+    .messd{
+        background: #f9f9f9;
+        padding: 0.466667rem 0.2rem;
+        margin-right: 0.4rem;
+    }
+
+    .p{
+        margin-bottom: 0.333333rem;
+    }
+
+    .p .o{
+        color:#f7564a;
+        font-size: 15px;
+    }
+
+    .p .k{
+        font-size: 13px;
+        color:#777777;
+        margin-right: 0.133333rem;
+    }
+
+    .messdtext{
+        color:#777777;
+        font-size: 14px;
+        line-height: 0.533333rem;
+    }
+
+    .tag{
+        padding: 0.4rem 0;
+    }
+
+    .tag .l{
+        color:#feb725;
+        font-size: 14px;
+    }
+
+    .tag .ho{
+        color:#f7564a;
+    }
+
+
+
+    .tag .r{
+        color:#999999;
+        font-size: 13px;
+    }
+
+    .tag{
+        padding: 0.4rem 0.4rem 0.4rem 0;
+    }
+
+    .btm{
+        margin-top: 0.266667rem;
+        background-color: #fff;
+        padding-left: 0.4rem;
+        margin-bottom: 0.4rem;
+    }
+
+    .btmp{
+        border-bottom: 1px solid #f1f1f1;
+        color:#333333;
+        font-size: 14px;
+        padding: 0.4rem 0;
+    }
+
+    .textp{
+        padding: 0.4rem 0.4rem 0.4rem 0;
+        font-size: 14px;
+        color:#777777;
+        line-height: 0.56rem;
+    }
+}
+.peopledetail{
+    background-color:#f2f2f7;
+
+    .title{
+        padding: 0.4rem 0;
+        color:#333333;
+        font-size: 15px;
+        border-bottom: 1px solid #f1f1f1;
+    }
+
+    .modu{
+        overflow: hidden;
+    }
+
+    .modes{
+        padding-left: 0.4rem;
+        background: #fff;
+        margin-bottom: 0.266667rem;
+    }
+
+    .title b{
+        margin-left: 0.2rem;
+        font-size: 12px;
+        background-color: #ffb264;
+        padding: 0.066667rem;
+        border-radius: 3px;
+        color:#fff;
+
+    }
+
+    .icon1{
+        background: url(http://img.pengt.com/static/images/xicon1.png) no-repeat;
+
+
+    }
+
+    .icon2{
+        background: url(http://img.pengt.com/static/images/xicon2.png) no-repeat;
+    }
+
+    .icon3{
+        background: url(http://img.pengt.com/static/images/xicon4.png) no-repeat;
+    }
+
+    .icon4{
+        background: url(http://img.pengt.com/static/images/xicon5.png) no-repeat;
+    }
+
+    .ic{
+        text-indent: 0.133333rem;
+        background-size: 100%;
+        width: 1.56rem;
+        height: 0.573333rem;
+        text-align: center;
+        line-height: 0.586667rem;
+        color:#fff;
+        font-size: 12px;
+    }
+
+    .address{
+        font-size: 13px;
+        color:#777;
+    }
+
+    .usermess{
+        margin-bottom: 0.16rem;
+    }
+
+    .userInfo{
+        padding: 0.4rem 0;
+        border-bottom: 1px solid #f1f1f1;
+    }
+
+    .Pic{
+        margin-right: 0.266667rem;
+    }
+
+    .usepic{
+        width: 1.066667rem;
+        height: 1.066667rem;
+        border-radius: 3px;
+    }
+
+    .name{
+        color:#333333;
+        font-size: 14px;
+    }
+
+    .line{
+        width: 1px;
+        height: 0.266667rem;
+        background-color: #999999;
+        margin: 0 0.133333rem;
+    }
+
+    .position{
+        font-size: 12px;
+        color:#999;
+        margin-right: 0.266667rem;
+    }
+
+    .type{
+        width: 0.8rem;
+        height: 0.4rem;
+        text-align: center;
+        line-height: 0.4rem;
+        color:#fff;
+        font-size: 12px;
+        border-radius: 5px;
+        margin-right: 0.133333rem;
+    }
+
+    .type1{
+        background-color: #5cb5fa;
+    }
+
+    .type2{
+        background-color: #feb366;
+    }
+
+    .icon{
+        background-image:url(http://img.pengt.com/static/images1/icon12.png);
+        width: 0.533333rem;
+        height: 0.4rem;
+        background-size: 100%;
+        display: block;
+        background-repeat: no-repeat;
+    }
+
+    .tab{
+        padding: 0.4rem 0.4rem 0.4rem 0;
+    }
+    .tab .b{
+        font-size: 15px;
+        color:#f7564a;
+        margin-right: 0.266667rem;
+    }
+
+    .tab .day{
+        font-size: 13px;
+        color:#777;
+    }
+
+    .tab .c{
+        font-size: 15px;
+    }
+
+    .tab .i{
+        background: url(http://img.pengt.com/static/images/xicon3.png) no-repeat;
+        background-size: 100%;
+        width: 0.426667rem;
+        height: 0.333333rem;
+        margin-right: 0.133333rem;
+    }
+
+    .tab .var{
+        font-size: 13px;
+        color:#1d89e5;
+    }
+
+    .tab .main{
+        font-size: 13px;
+        color:#777;
+    }
+
+    .detail{
+        background: #fff;
+        padding-bottom: 2.0rem;
+        padding-left: 0.4rem;
+    }
+
+    .dtitle{
+        padding: 0.4rem 0.4rem 0.4rem 0;
+        border-bottom: 1px solid #f1f1f1;
+    }
+
+    .dtitle .l{
+        font-size: 14px;
+        color:#333;
+    }
+
+    .dtitle .r{
+        font-size: 13px;
+        color:#999999;
+    }
+
+    .dtext{
+        padding: 0.4rem 0.4rem 0.4rem 0;
+        font-size: 14px;
+        color:#777;
+        line-height: 0.533333rem;
+    }
+
+    .imglist{
+        display: block;
+        margin: 0.266667rem auto;
+        max-width: 90%;
+        width: auto;
+    }
+
+    .link{
+        background: #f9f9f9;
+        padding: 0.266667rem 0.4rem;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+    }
+
+    .link .a{
+        width: 4.4rem;
+        height: 1.066667rem;
+        line-height: 1.066667rem;
+        text-align: center;
+        border:2px solid #1d8ae5;
+        border-radius: 5px;
+        font-size: 18px;
+        color:#1d8ae5;
+    }
+
+    .link .b{
+        background-color: #1d8ae5;
+        color:#fff;
+        font-size: 18px;
+        width: 4.4rem;
+        height: 1.12rem;
+        line-height: 1.066667rem;
+        text-align: center;
+        border-radius: 5px;
+    }
+
+    .btm{
+        margin-top: 0.266667rem;
+        background-color: #fff;
+        padding-left: 0.4rem;
+    }
+
+    .btmp{
+        border-bottom: 1px solid #f1f1f1;
+        color:#333333;
+        font-size: 14px;
+        padding: 0.4rem 0;
+    }
+
+    .telpic{
+        width: 0.693333rem;
+        height: 0.693333rem;
+    }
+
+    .tel{
+        padding: 0.4rem 0.4rem 0.4rem 0;
+    }
+
+    .names{
+        font-size: 0.4rem;
+        color:#353535;
+    }
+
+}
+.nocard{
+    .nocard{
+        background: #ffffff;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .pic{
+        margin: 2.4rem auto 1.0rem auto;
+        width: 4.773333rem;
+        height: 4.16rem;
+    }
+
+    .img{
+        width: 4.773333rem;
+        height: 4.16rem;
+    }
+
+    .a{
+        font-size: 18px;
+        color:#1d8ae5;
+        width: 4.4rem;
+        height: 1.066667rem;
+        text-align: center;
+        line-height: 1.066667rem;
+        border-radius: 5px;
+        border:1px solid #1d8ae5;
+        margin: 0 auto;
+    }
+}
+
+.newcard{
+        background-color:#f2f2f7;
+    .area{
+        padding:0.426667rem 0;
+        margin-bottom: 0.533333rem;
+        width: 100%;
+        color: rgb(136,136,136);
+        font-size: 14px;
+    }
+    .namecard{
+        margin: 0.266667rem 0;
+        background-color: #fff;
+    }
+
+    .hy{
+        position:relative;
+        height:22px;
+
+        .bindprofession{
+            position:absolute;
+            top:0;
+            left:0;
+            z-index:5;
+            width:100%;
+            height:100%;
+        }
+        .profession{
+            position:absolute;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+             font-size:15px;
+        }
+    }
+    .cardbox{
+        padding: 0.4rem 0 0px 0.4rem;
+        background-color: #fff;
+            border-bottom: 1px solid #f1f1f1;
+        -webkit-box-align:start;
+    }
+    .cardpic{
+        width: 1.6rem;
+        height: 1.6rem;
+    }
+    .pic{
+        width: 1.6rem;
+        height: 1.6rem;
+        border-radius: 0.106667rem;
+        margin-right: 0.333333rem;
+    }
+
+    .cardinput{
+
+        border-bottom: 1px solid #f1f1f1;
+    }
+
+    .cardinput:last-of-type{
+        border-bottom: none;
+    }
+
+    .input{
+        font-size: 15px;
+        color:#333;
+    }
+
+    .names{
+        padding-bottom: 0.4rem;
+    }
+
+    .tels{
+        padding-top: 0.4rem;
+        padding-bottom: 0.4rem;
+        font-size:15px;
+    }
+
+    .tels .tel{
+        width: 4.533333rem;
+    }
+
+    .codes{
+        padding-top:0.266667rem;
+        font-size:15px;
+    }
+
+    .sendCode{
+        color:#258ee6;
+        font-size: 14px;
+        width: 2.4rem;
+        height: 0.666667rem;
+        border-radius: 0.333333rem;
+        text-align: center;
+        line-height: 0.666667rem;
+        border:1px solid #258ee6;
+    }
+
+    .form{
+        background-color: #fff;
+    }
+
+    .parIn{
+        margin-left: 0.4rem;
+        border-bottom: 1px solid #f1f1f1;
+        padding: 0.4rem 0;
+    }
+
+    .t{
+        color:#777;
+        font-size: 15px;
+        margin-right: 0.4rem;
+    }
+
+    .h{
+        position: relative;
+    }
+
+    .h:before{
+        content:'';
+        background: url(http://img.pengt.com/static/images1/icon8.png) no-repeat;
+        width: 0.213333rem;
+        height: 0.346667rem;
+        background-size: 100%;
+        position: absolute;
+        top:50%;
+        right:0.4rem;
+        -webkit-transform:translate(0, -50%);
+        z-index:10;
+    }
+
+    .more{
+        margin-top: 0.266667rem;
+        padding: 0 0.4rem 0.4rem 0.4rem;
+        height: 1.6rem;
+        margin-bottom: 0.266667rem;
+        overflow: hidden;
+        background-color: #fff;
+        display:-webkit-box;
+    }
+
+    .moretxt{
+        color:#777;
+        font-size: 15px;
+        margin-right: 0.4rem;
+    }
+
+
+    .selectTitle{
+        color:#777;
+        font-size: 15px;
+        margin-bottom: 0.2rem;
+    }
+
+    .selectStyle{
+        padding: 0.4rem;
+        overflow: hidden;
+        background-color: #fff;
+
+    }
+
+    .selectPic{
+        width: 4.466667rem;
+        height: 2.6rem;
+        margin-bottom: 0.2rem;
+    }
+
+    .d{
+        margin-right: 0.2rem;
+    }
+
+    .selected{
+        position: relative;
+    }
+
+    .selected:before{
+        content: '';
+        background: url(http://img.pengt.com/static/images1/icon26.png) no-repeat;
+        width: 0.813333rem;
+        height: 0.813333rem;
+        background-size:100%;
+        position: absolute;
+        top:0;
+        right: 0;
+    }
+
+    .submit{
+        color:#fff;
+        font-size: 18px;
+        background-color: #1d8ae5;
+        margin: 0.666667rem auto 1.333333rem auto;
+        width: 90%;
+    }
+
+    .br{
+        border:1px solid #1d8ae5;
+        border-radius: 3px;
+    }
+
+    .codeinput{
+        border-bottom: none;
+    }
+
+    .inpute{
+        border-bottom: none;
+    }
+
+}
+
+.hiscard{
+
+    .mycard .histag1 .icons{
+        background: url(http://img.pengt.com/static/images1/h1.png) no-repeat;
+        background-size: 100% 100%;
+    }
+
+    .mycard .histag2 .icons{
+        background: url(http://img.pengt.com/static/images1/xx1.png) no-repeat;
+        background-size: 100% 100%;
+    }
+
+    .mycard .histag3 .icons{
+        background: url(http://img.pengt.com/static/images1/x1.png) no-repeat;
+        background-size: 100% 100%;
+    }
+    .NocardHis{
+        position: relative;
+        line-height: 48px;
+        font-size: 18px;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex;
+    }
+}
+
+.mycards{
+    background-color:#f2f2f7;
+    .mycard{
+        padding-bottom: 1.6rem;
+        position: relative; /* Chrome10-25,Safari5.1-6 */
+        overflow: hidden;
+    }
+
+    .bg:before{
+        background-image: url(http://img.pengt.com/static/images1/icon19.png);
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 6.4rem;
+        background-size: 100%;
+        content: '';
+        position: absolute;
+        top:-0.4rem;
+        z-index: -1;
+    }
+
+    .mobule{
+        margin:0.4rem;
+        border-radius: 8px;
+        background-color: #fff;
+        box-shadow:0px 3px 5px rgba(24,50,72,0.25);
+        position: relative;
+        overflow: hidden;
+        width: 9.2rem;
+    }
+
+    .pic{
+        margin-right: 0.466666667rem;
+    }
+
+    .pic,.usepic{
+        width: 1.866666667rem;
+        height: 1.866666667rem;
+    }
+
+    .usepic{
+        border-radius: 50%;
+    }
+
+    .name{
+        color:#333;
+        font-size: 18px;
+        margin-bottom: 0.4rem;
+
+    }
+
+    .mc{
+        margin-bottom: 0.666666667rem;
+        padding: 0.533333333rem;
+    }
+
+    .usermess{
+        font-size: 12px;
+        color:#777;
+        margin: 0.2rem 0;
+    }
+
+    .type{
+        width: 0.8rem;
+        height: 0.4rem;
+        text-align: center;
+        line-height: 0.4rem;
+        color:#fff;
+        font-size: 12px;
+        border-radius: 3px;
+    }
+
+    .type1{
+        background-color: #5cb5fa;
+    }
+
+    .type2{
+        background-color: #feb366;
+    }
+
+    .icon{
+        background-image:url(http://img.pengt.com/static/images1/icon12.png);
+        width: 0.533333333rem;
+        height: 0.4rem;
+        background-size: 100%;
+        display: block;
+        background-repeat: no-repeat;
+    }
+    .Comaddress{
+        color:#777;
+        font-size: 12px;
+    }
+    .mr{
+        margin-right: 0.133333333rem;
+    }
+
+    .mc2{
+        font-size: 13px;
+        color:#777;
+        margin-bottom: 0.2rem;
+    }
+
+    .mc2:last-of-type{
+        margin-bottom: 0
+    }
+
+
+    .mc2:before{
+        content:'';
+        background-size: 100%;
+        background-repeat:no-repeat;
+        margin-right: 0.266666667rem;
+        display: block;
+    }
+
+    .tel::before{
+        background-image: url(http://img.pengt.com/static/images1/icon13.png);
+        width: 0.373333333rem;
+        height: 0.373333333rem;
+
+    }
+
+    .address::before{
+        background-image: url(http://img.pengt.com/static/images1/icon14.png);
+        width: 0.373333333rem;
+        height: 0.373333333rem;
+    }
+
+    .email::before{
+        background-image: url(http://img.pengt.com/static/images1/icon15.png);
+        width: 0.373333333rem;
+        height: 0.373333333rem;
+    }
+
+    .tag{
+        background-color: #fff;
+        padding: 0.533333333rem 0;
+        margin-top: 0.333333333rem;
+    }
+
+    .tag img{
+        margin-bottom: 0.2rem;
+
+    }
+
+    .tag1{
+        width: 0.506666667rem;
+        height: 0.506666667rem;
+        background: url(http://img.pengt.com/static/images1/h3.png) no-repeat;
+        background-size: 100% 100%;
+    }
+
+
+    .tag2{
+        width: 0.506666667rem;
+        height: 0.506666667rem;
+        background: url(http://img.pengt.com/static/images1/xx3.png) no-repeat;
+        background-size: 100% 100%;
+    }
+
+    .tag3{
+        width: 0.506666667rem;
+        height: 0.506666667rem;
+        background: url(http://img.pengt.com/static/images1/x3.png) no-repeat;
+        background-size: 100% 100%;
+    }
+
+    .auto{
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .icons{
+        margin-bottom: 0.2rem;
+    }
+
+
+    .text .b{
+        margin-right: 0.133333333rem;
+    }
+
+    .text{
+        color:#777;
+        font-size: 12px;
+    }
+
+    .textmore{
+        margin-top: 0.333333333rem;
+        overflow: hidden;
+    }
+
+    .textmore .more{
+        font-size: 12px;
+        color:#777;
+        padding-left: 0.4rem;
+        margin-bottom: 0.2rem;
+    }
+
+    .texts{
+        background-color: #fff;
+        font-size: 13px;
+        color:#777;
+        padding: 0.4rem;
+        line-height: 0.533333333rem;
+        text-indent: 2em;
+    }
+
+    .link{
+        font-size: 15px;
+        color:#fff;
+        background-color: #1d8ae5;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+    }
+
+    .link .a{
+        padding: 0.4rem 0;
+        text-align: center;
+        border-right:1px solid #87beeb;
+    }
+    .link .a:last-of-type{
+        border-right:none;
+    }
+
+    .linear{
+        background: -webkit-linear-gradient(#06143d 0%, #4f3079 100%);
+        background: linear-gradient(#06143d 0%, #4f3079 100%);
+        min-height: 100%;
+        overflow: hidden;
+    }
+
+    .linear .mobule{
+        background:url(http://img.pengt.com/static/images1/icon22.png) no-repeat;
+        background-size: 100% 100%;
+        box-shadow:none;
+        overflow: hidden;
+
+    }
+
+    .linear .tag{
+        background:#4f3e96;
+    }
+
+    .linear .textmore .texts{
+        background:none;
+    }
+
+    .linear .link{
+        background:#4f3e96;
+    }
+
+    .linear .name,.linear .Comaddress,.linear .mc2,.linear .text,.linear .more,.linear .texts{
+        color:#fff;
+    }
+
+    .linear .position{
+        color:#e8e9ff;
+    }
+
+    .linear .usepic{
+        border:8px solid #555a92;
+    }
+
+    .linear .tag1{
+
+        background: url(http://img.pengt.com/static/images1/h2.png) no-repeat;
+        background-size: 100% 100%;
+    }
+
+
+    .linear .tag2{
+
+        background: url(http://img.pengt.com/static/images1/xx2.png) no-repeat;
+        background-size: 100% 100%;
+    }
+
+    .linear .tag3{
+
+        background: url(http://img.pengt.com/static/images1/x2.png) no-repeat;
+        background-size: 100% 100%;
+    }
+
+    .linear .mybg{
+        padding: 0.4rem 0.4rem 0.4rem 0.4rem;
+        background: rgba(255,255,255,0.2);
+        display: block;
+        width: 9.2rem;
+    }
+
+    .linear .mc{
+        margin-bottom: 0.4rem;
+    }
+
+    .bg2{
+        background-color: #fff;
+    }
+
+    .bg2 .bg2Icon{
+        background: url(http://img.pengt.com/static/images1/icon23.png) no-repeat;
+        width: 100%;
+        height: 4.453333333rem;
+        background-size: 100%;
+        position: absolute;
+        top:0;
+
+    }
+
+    .bg2Pic{
+        width: 2.04rem;
+        height: 1.973333333rem;
+        margin:0 auto;
+        position: relative;
+    }
+
+    .bg2usepic{
+        width: 1.6rem;
+        height: 1.6rem;
+        border-radius: 50%;
+        position: absolute;
+        top:50%;
+        left: 50%;
+        -webkit-transform:translate(-50%, -50%);
+
+    }
+
+    .bg2Pic .before{
+        background: url(http://img.pengt.com/static/images1/icon24.png) no-repeat;
+        width: 2.04rem;
+        height: 1.973333333rem;
+        background-size: 100%;
+        position: absolute;
+        top:0;
+        left: 0;
+        display: block;
+    }
+
+    .bg2name{
+        font-size: 15px;
+        color:#fff;
+        text-align: center;
+        margin-top: 0.133333333rem;
+    }
+
+    .bg2 .usermess{
+        color:#fff;
+        font-size: 12px;
+    }
+
+    .bg2 .userCom{
+        color:#fff;
+        font-size: 13px;
+        text-align: center;
+
+    }
+
+    .bg2 .userInfo{
+        height: 4.453333333rem;
+
+    }
+
+    .bg2mybg{
+        margin-left: 0.4rem;
+        display: block;
+        margin-top: 0.266666667rem;
+    }
+
+    .bg2 .node{
+        z-index: 3;
+        position: relative;
+    }
+
+    .bg2 .tag{
+        border-top: 1px solid #f1f1f1;
+    }
+
+    .bg2 .tag .box1{
+        border-right:1px solid #f1f1f1;
+    }
+
+    .bg2 .tag .box1:last-of-type{
+        border-right:none;
+    }
+
+    .bg2 .textmore{
+        background-color: #f2f2f7;
+        margin-top: 0;
+        padding-top: 0.333333333rem;
+    }
+    .share{
+        position: fixed;
+        top:0;
+        left: 0;
+        z-index: 11;
+        background: rgba(0,0,0,0.7);
+        width: 100%;
+        height: 100%;
+    }
+
+    .share .i{
+
+        background: url(http://img.pengt.com/static/images1/icon25.png) no-repeat;
+        width: 6.84rem;
+        height: 5.626666667rem;
+        position: absolute;
+        right:0.666666667rem;
+        top:0.266666667rem;
+        background-size: 100%;
+    }
+
+    .bg .mybg,.first .mybg{
+        display:block;
+        padding: 0 0.533333333rem 0.533333333rem 0.533333333rem;
+    }
+
+    .bg .mc{
+        padding-bottom:0;
+    }
+
+    .nav{
+        text-align: center;
+        padding: 0.4rem 0;
+    }
+
+    .first .mobule {
+        position:relative;
+    }
+
+    .first .mobule::after{
+        content:'';
+        background:url(http://img.pengt.com/static/images1/icon32.png) no-repeat;
+        height:0.906666667rem;
+        width:100%;
+        background-size:100% 100%;
+        position:absolute;
+        bottom:0;
+        left:0;
+    }
+
+    .linear .tel::before{
+        background: url(http://img.pengt.com/static/images1/icon13-1.png) no-repeat;
+
+        background-size: 100% 100%;
+    }
+
+    .linear .email::before{
+        background: url(http://img.pengt.com/static/images1/icon15-1.png) no-repeat;
+
+        background-size: 100% 100%;
+    }
+
+    .linear .address::before{
+        background: url(http://img.pengt.com/static/images1/icon14-1.png) no-repeat;
+
+        background-size: 100%;
+    }
+
+}
+
+.mehoot{
+        background-color:#f2f2f7;
+
+    .mess{
+        padding: 0.4rem 0.4rem 0.4rem 0;
+        margin-left: 0.4rem;
+    }
+
+    .img{
+        width:1.133333333rem;
+        height: 1.133333333rem;
+        border-radius: 3px;
+    }
+
+    .name{
+        color:#333;
+        font-size: 14px;
+    }
+
+    .line{
+        background-color:#999;
+        width: 1px;
+        height: 0.373333333rem;
+        margin:0 0.133333333rem;
+    }
+
+    .position{
+        color:#999;
+        font-size: 12px;
+    }
+
+    .namepar{
+        margin-bottom: 0.266666667rem;
+    }
+
+    .compy{
+        font-size: 13px;
+        color:#777;
+    }
+
+    .mo{
+        margin-left: 0.213333333rem;
+    }
+
+    .giveCard{
+        background-color: #1d8ae5;
+        width: 2.8rem;
+        height: 0.8rem;
+        line-height: 0.8rem;
+        text-align: center;
+        color:#fff;
+        font-size: 14px;
+        border-radius: 3px;
+    }
+
+    .txt{
+        color:#999;
+        font-size: 14px;
+    }
+
+    .txt::after{
+        content: '';
+        background-image: url(http://img.pengt.com/static/images1/icon9.png);
+        background-size: 100%;
+        width: 0.213333333rem;
+        height: 0.346666667rem;
+        display: block;
+        margin-left: 0.2rem;
+    }
+
+    .letter{
+        font-size: 14px;
+        color:#999;
+        padding:0.133333333rem 0.4rem;
+    }
+
+    .of{
+        background-color: #fff;
+        position: relative;
+    }
+
+    .of .mess{
+        border-bottom: 1px solid #f1f1f1;
+    }
+
+    .nsc{
+        width: 1.6rem;
+        height: 0.8rem;
+        color:#fff;
+        font-size: 14px;
+        border-radius: 3px;
+        background-color: #0e88e8;
+        text-align: center;
+        line-height: 0.8rem;
+    }
+
+    .ysc{
+        width: 1.6rem;
+        height: 0.8rem;
+        color:#fff;
+        font-size: 14px;
+        border-radius: 3px;
+        background-color: #c2c2c2;
+        text-align: center;
+        line-height: 0.8rem;
+    }
+
+}
+
+.weui-bar__item_on{
+    .l1{
+        background:url(../images/m4.png) no-repeat;
+        background-size:100%;
+    }
+    .l2{
+        background:url(../images/m6.png) no-repeat;
+        background-size:100%;
+    }
+    .l3{
+        background:url(../images/m2.png) no-repeat;
+        background-size:100%;
+    }
+}
+
+.l1{
+    background:url(../images/m3.png) no-repeat;
+    background-size:100%;
+}
+.l2{
+    background:url(../images/m5.png) no-repeat;
+    background-size:100%;
+}
+.l3{
+    background:url(../images/m1.png) no-repeat;
+    background-size:100%;
+}
+
+
+

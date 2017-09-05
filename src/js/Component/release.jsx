@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import Tool from './Tool';
+import Tool from '../Config/Tool';
 import { Link } from 'react-router'
 
 let imgAll=[],imgs=[],localId=[];

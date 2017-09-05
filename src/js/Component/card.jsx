@@ -2,7 +2,7 @@ import React, {Component, PropTypes} from 'react';
 import { browserHistory } from 'react-router';
 import { Link } from 'react-router'
 
-import Tool from './Tool';
+import Tool from '../Config/Tool';
 
 console.log(Tool)
 import Footer from './footer';

@@ -8,10 +8,10 @@
 import React, {Component, PropTypes} from 'react';
 import Of from './of';
 import Footer from './footer';
-import Tool from './Tool';
+import Tool from '../Config/Tool';
 import { Link } from 'react-router'
 
-import x3 from '../images/xxicon3.png';
+import x3 from '../../images/xxicon3.png';
 
 
 export default class List extends Component {

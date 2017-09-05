@@ -2,7 +2,7 @@
 * @Author: mark
 * @Date:   2017-03-02 10:16:35
 * @Last Modified by:   mark
-* @Last Modified time: 2017-07-18 09:57:07
+* @Last Modified time: 2017-09-05 10:53:27
 */
 //new webpack.optimize.CommonsChunkPlugin('./bundle/commons.js') //页面多起来可以用];
 var webpack = require('webpack'),
@@ -19,7 +19,7 @@ module.exports = function(env) {
 
     config = {
         entry:{
-            vendor:path.resolve(__dirname,'src/js/public.js'),
+            vendor:path.resolve(__dirname,'src/js/public.jsx'),
         },
         resolve:{
             extensions:['.js','.jsx','.less','.css','.min.js','.html'],
@@ -135,7 +135,7 @@ module.exports = function(env) {
         }
         config.output = {
             filename: 'js/[name].js',
-            chunkFilename: "js/[name].min.js"
+            chunkFilename: "js/[name].[chunkhash:5].min.js"
         }
         config.plugins.push(new webpack.DefinePlugin({
             'process.env': {

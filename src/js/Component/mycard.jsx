@@ -43,8 +43,6 @@ export default class MyCard extends Component {
 			this.setState({
 				info: Object.assign({}, data.data)
 			})
-
-
 		})
 	}
 	

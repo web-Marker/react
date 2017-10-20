@@ -4,11 +4,11 @@
 * @Last Modified by:   mark
 * @Last Modified time: 2017-09-05 09:19:00
 */
-
 import React, {Component, PropTypes} from 'react';
 import ReactDOM, {render} from 'react-dom';
 import router from './Router/Route';
-
+import {Provider} from 'react-redux';
+import store from './Redux/Store/Store';
 import fetchJsonp from 'fetch-jsonp';
 
 //加载样式
@@ -21,7 +21,9 @@ import './Config/phonerm';
 
 const url = 'https://api.pengt.com/';
 const str = 'from=308f23b7cada2828bb7ade10401aa5f8&uid=7&sign=04b29480233f4def5c875875b6bdc3b1';
-
+if (module.hot) {
+	module.hot.accept();
+}
 /**
  * *获取token
  * @return {[type]} [description]
@@ -46,7 +48,15 @@ if (process.env.NODE_ENV === 'development') {
 	});
 }
 
+store.subscribe(() => { //监听state变化
+    console.log(store.getState())
+});
+
+
+
 render(
-	router
+	<Provider store={store}>
+		{router}
+	</Provider>
 	,document.getElementById('app')
 );

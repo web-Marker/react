@@ -6,39 +6,42 @@
 */
 
 import React, {Component, PropTypes} from 'react';
+import { connect } from 'react-redux';
+import *as action from '../Redux/Action/Index';
 
-export default class Navtab extends Component {
+class Navtab extends Component {
 
 	constructor(props) {
 		super(props)
-		this.state = {
-			type: true
-		}
-
 	}
 
-	render(){
 
+	render(){
+		const {type, dispatch} = this.props;
+		console.log(type)
 		return(
 			<div className="navtab box">
-		        <a href="javascript:;;" className={`navbar_item bk ${this.state.type ? `pactive` : ``}`} onClick={()=>{
-		        	this.props.handleClick(true);
-		        	this.setState({
-						type: true
-					})
-				}}>
-		           	需求
+		        <a href="javascript:;;" className={`navbar_item bk ${type ? `pactive` : ``}`} onClick={()=> 
+		        	dispatch(action.changeTab(true))
+				}>
+		           	需求1
 		        </a>
-		        <a href="javascript:;;" className={`navbar_item bk ${this.state.type ? `` : `pactive`}`} onClick={()=>{
-		        	this.props.handleClick(false);
-		        	this.setState({
-						type: false
-					})
-		        }}>
+		        <a href="javascript:;;" className={`navbar_item bk ${type ? `` : `pactive`}`} onClick={()=>
+		        	dispatch(action.changeTab(false))
+		        }>
 		            活动
 		        </a>
 		    </div>
 		)
 	}
-
 }
+
+//上级给下级的props
+const mapStateToProps = (state) =>{
+	return {
+		type: state.navTab.type
+	}
+}
+
+
+export default connect(mapStateToProps)(Navtab);

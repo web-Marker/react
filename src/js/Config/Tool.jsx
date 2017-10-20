@@ -4,6 +4,7 @@ const url = 'https://api.pengt.com/';
 const froms = '308f23b7cada2828bb7ade10401aa5f8';
 
 module.exports =  {
+
 	objorString(obj){
 		let array = [];
 		for (let key in obj){
@@ -12,6 +13,13 @@ module.exports =  {
 		}
 		let urlParam = array.join('&')
 		return urlParam;
+	},
+
+	isEmptyObject(obj) {   
+	　　for (var name in obj){
+	　　　　return false;//返回false，不为空对象
+	　　}　　
+	　　return true;//返回true，为空对象
 	},
 
 	async ajax(params){

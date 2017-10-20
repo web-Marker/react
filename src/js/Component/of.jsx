@@ -16,7 +16,7 @@ export default class Of extends Component {
 	render(){
 		return (
 			<dd className="bk of">
-				<a href={`needdetail.html?tid=${this.props.attr.tid}`} className="nav" >
+				<a href="javascript:;;" className="nav" >
 					<div className="title box boxjustify">
 						<span className="box"><span className="bk e">{this.props.attr.subject}</span><span className={`bk b ${this.props.attr.authorid == `0` ? `` : `hide`}`}>朋拓委托</span></span>
 						<span className={`bk icon1 ic ${this.props.attr.status == `0` ? `` : `hide`}`}>未投标</span>

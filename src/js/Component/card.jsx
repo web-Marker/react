@@ -5,7 +5,7 @@ import { Link } from 'react-router'
 import Tool from '../Config/Tool';
 
 console.log(Tool)
-import Footer from './footer';
+import Footer from './footer.jsx';
 
 export default class Card extends Component {
 	constructor(props, context) {

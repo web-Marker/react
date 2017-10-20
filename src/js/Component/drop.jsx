@@ -1,7 +1,11 @@
 import React, {Component, PropTypes} from 'react';
+import { connect } from 'react-redux';
+import *as action from '../Redux/Action/Index';
 
 const el = document.body.classList;
-export default class Drop extends Component {
+let num = 1;
+
+class Drop extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -28,8 +32,10 @@ export default class Drop extends Component {
 			e.preventDefault();
     		e.stopPropagation();
 			let diffY = e.targetTouches[0].pageY - this.state.startY;
-			diffY = Math.pow(diffY, 0.8);
+		
 			if (diffY < 0 ) diffY = 0;
+			diffY = Math.pow(diffY, 0.8);
+
 			el.add('touching');
 			if (diffY < this.state.distance) {
 				el.remove("pull-up");
@@ -58,18 +64,27 @@ export default class Drop extends Component {
 				this.setState({
 					height:0
 				})
+				
 			}else{
 				this.setState({
 					height:this.state.distance
 				})
 				el.add("refreshing");
-				this.refresh(this.props.run);
+
+				//使用redux之后可以不需要refresh方法 
+				//this.refresh(this.props.run);
+
+				//使用redux后 发送一个action
+				this.props.dispatch(action.onDrop(num++))
+				console.log(this.props)
 			}
 			return false;
 
 		}
 
+		//使用redux之后可以不需要refresh方法 
 		this.refresh = (callback) =>{
+			console.log(callback)
 			if (callback) callback(this.pullToRefreshDone)
 		}
 
@@ -80,13 +95,21 @@ export default class Drop extends Component {
     			height:0
     		})
 		}
+
+		//使用redux后的刷新请求数据
 	}
 
-	componentDidMount(){
+	componentWillReceiveProps(nextProps){
+		console.log('drop',nextProps)
+		if (!nextProps.getload) {
+			this.pullToRefreshDone();
+		}
+	}
 
-			window.addEventListener('touchstart', this.handleStart.bind(this));
-			window.addEventListener('touchmove', this.handleMove.bind(this));
-			window.addEventListener('touchend', this.handleEnd.bind(this));
+	componentWillMount(){
+		window.addEventListener('touchstart', this.handleStart.bind(this));
+		window.addEventListener('touchmove', this.handleMove.bind(this));
+		window.addEventListener('touchend', this.handleEnd.bind(this));
 	}
 
 	render(){
@@ -104,3 +127,13 @@ export default class Drop extends Component {
 		)
 	}
 }
+
+//上级给下级的props
+const mapStateToProps = (state) =>{
+	return {
+		getload: state.getData.getload
+	}
+}
+
+
+export default connect(mapStateToProps)(Drop);

@@ -1,38 +1,6 @@
-.radiuts(@radius){
-    -moz-border-radius: @radius;
-    -webkit-border-radius: @radius;
-    border-radius: @radius;
-}
-
-.shadow(@a,@b,@c,@e){
-    -moz-box-shadow:@a @b @c @e;
-    -webkit-box-shadow:@a @b @c @e;
-    box-shadow:@a @b @c @e;
-}
-.radiuts(@radius){
-    -moz-border-radius: @radius;
-    -webkit-border-radius: @radius;
-    border-radius: @radius;
-}
-.transition(@attr,@time,@ea){
-    -webkit-transition:@attr @time @ea;
-    transition: @attr @time @ea;
-    -moz-transition:@attr @time @ea;
-    -o-transition:@attr @time @ea;
-}
-.bgcolor(@color){
-    background-color:@color;
-}
-.boxv(@bv){
-    -moz-box-flex:@bv;
-    -webkit-box-flex:@bv;
-    box-flex:@bv;
-}
 .hide{
     display:none!important;
 }
-
-
 
 
 .weui-tabbar{
@@ -1019,7 +987,7 @@ display:block;width:100%;height:100%;content:"";background-size:cover;background
             .pic{
                 width: 1.133333rem;
                 height: 1.133333rem;
-                .radiuts(3px);
+                border-radius:3PX;
                 margin-right: 0.266667rem;
             }
             .firm{
@@ -1041,7 +1009,7 @@ display:block;width:100%;height:100%;content:"";background-size:cover;background
                 }
                 .type1{
                     color:#fff;
-                    .radiuts(2px);
+                    border-radius: 2PX;
                     width: 0.8rem;
                     height: 0.4rem;
                     background: #58b6fb;
@@ -1052,7 +1020,7 @@ display:block;width:100%;height:100%;content:"";background-size:cover;background
                 }
                 .type2{
                     color:#fff;
-                    .radiuts(2px);
+                    border-radius: 2PX;
                     width: 0.8rem;
                     height: 0.4rem;
                     background: #ffb264;
@@ -1975,7 +1943,7 @@ display:block;width:100%;height:100%;content:"";background-size:cover;background
             .pic{
                 width: 1.133333rem;
                 height: 1.133333rem;
-                .radiuts(3px);
+                border-radius: 3PX;
                 margin-right: 0.266667rem;
             }
             .firm{
@@ -1997,7 +1965,7 @@ display:block;width:100%;height:100%;content:"";background-size:cover;background
                 }
                 .type1{
                     color:#fff;
-                    .radiuts(2px);
+                    border-radius: 2PX;
                     width: 0.8rem;
                     height: 0.4rem;
                     background: #58b6fb;
@@ -2008,7 +1976,7 @@ display:block;width:100%;height:100%;content:"";background-size:cover;background
                 }
                 .type2{
                     color:#fff;
-                    .radiuts(2px);
+                    border-radius: 2PX;
                     width: 0.8rem;
                     height: 0.4rem;
                     background: #ffb264;
@@ -2099,7 +2067,7 @@ display:block;width:100%;height:100%;content:"";background-size:cover;background
 .navbar_item{
     font-size: 15px;
     color:#8f8f8f;
-    .boxv(1);
+    flex:1;
     text-align:center;
     padding: 0.4rem 0;
 }
@@ -2109,7 +2077,7 @@ display:block;width:100%;height:100%;content:"";background-size:cover;background
     top: 0;
     left: 0;
     background: #fff;
-    z-index:99;
+    z-index:199;
 }
 
 .pactive{

@@ -10,22 +10,20 @@ import Of from './of';
 import Footer from './footer';
 import Tool from '../Config/Tool';
 import { Link } from 'react-router'
-
+import { connect } from 'react-redux';
+import *as action from '../Redux/Action/Index';
 import x3 from '../../images/xxicon3.png';
 
 
-export default class List extends Component {
+class List extends Component {
 	
 	constructor(props) {
 		super(props)
 		this.state = {
 			list:[],
-			need:true,
 			size:0,
 			showFrom:false
 		}
-
-
 		this.handClick = () => {
 			this.setState({
 				showFrom: !this.state.showFrom
@@ -35,72 +33,47 @@ export default class List extends Component {
 	}
 
 	componentWillReceiveProps(nextProps){
- 
-		if ((nextProps.size != this.state.size) || (nextProps.data != this.state.need)) {
-			console.log(nextProps)
+		console.log('nextProps',nextProps)
+		console.log(this.props.type)
+		if (this.props.jsons != nextProps.jsons) {
 			this.setState({
-				need:nextProps.data,
-				size:nextProps.size
-			},()=>{
-
-				if (this.state.need) {
-					Tool.ajax({
-						data:{
-							mod: 'getBidding',
-			            	appid:'pengt'
-						},
-						url:'bidding'
-					}).then((data)=>{
-						this.setState({
-							list: Object.assign([], data.msg.data)
-						})
-
-						
-						this.props.complete(false)
-						if (this.props.call) this.props.call();
-					})
-				}else{
-					console.log("45")
-					Tool.ajax({
-						data:{
-							fid: 45
-						},
-						url:'forum/getThreadList'
-					}).then((data)=>{
-						this.setState({
-							list: Object.assign([], data.data)
-						})
-						this.props.complete(false)
-						if (this.props.call) this.props.call();
-					})
-				}
+				list: nextProps.jsons
 			})
 		}
+
+		if (this.props.tablist != nextProps.tablist) {
+			this.setState({
+				list: nextProps.tablist
+			})
+		}
+
+		//|| (this.props.isdrop != nextProps.isdrop)
 		
-		
+		if ((nextProps.type != this.props.type) || (nextProps.isdrop != this.props.isdrop)) {
+			if (nextProps.type) {
+				this.props.dispatch(action.newGetData({mod: 'getBidding',appid:'pengt'},'bidding',true, false))
+			}else{
+				this.props.dispatch(action.newGetData({fid: 45},'forum/getThreadList',true, false))
+			}
+		}
+	}
+	
+
+	shouldComponentUpdate(nextProps, nextState){
+		return !(nextProps === this.props) || !(nextState === this.state);
 	}
 
 	componentWillMount() {
-		Tool.ajax({
-			data:{
-				mod: 'getBidding',
-            	appid:'pengt'
-			},
-			url:'bidding'
-		}).then((data)=>{
-			if (data.code == 100) {
-				alert('测试环境获取id有延迟,请再次刷新');
-				return;
-			}
-			this.setState({
-				list: Object.assign([], data.msg.data),
-			})
-			this.props.complete(false)
-		})
+		console.log('componentWillMount')
+		this.props.dispatch(action.fetchPosts(true, false))
+
 	}
+
+
 	
 	render(){
-		console.log()
+	
+		if (Tool.isEmptyObject(this.state.list)) return null;
 		return (
 			<div className="weui-tab wrapper">
 			    <div className="weui-tab__panel">
@@ -109,7 +82,6 @@ export default class List extends Component {
 	            			<dl>
 	            				{
 	            					this.state.list.map((index, elem)=>{
-	            						
 	            						return <Of attr={index} key={elem}/>
 	            					})
 	            				}
@@ -125,4 +97,18 @@ export default class List extends Component {
 	}
 
 }
+
+
+//上级给下级的props
+const mapStateToProps = (state) =>{
+	return {
+		type: state.navTab.type,
+		jsons: state.fetchData.list,
+		tablist: state.getData.list,
+		isdrop: state.setDrop.isdorp
+	}
+}
+
+
+export default connect(mapStateToProps)(List);
 

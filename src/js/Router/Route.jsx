@@ -9,7 +9,6 @@ class Roots extends Component {
     }
 }
 
-
 const Index = (location, cb) => {
     require.ensure([], require => {
         cb(null, require('../Component/index').default)

@@ -2,102 +2,109 @@
 * @Author: mark
 * @Date:   2017-03-02 10:16:35
 * @Last Modified by:   mark
-* @Last Modified time: 2017-09-05 10:53:27
+* @Last Modified time: 2017-09-27 10:32:02
 */
-//new webpack.optimize.CommonsChunkPlugin('./bundle/commons.js') //页面多起来可以用];
-var webpack = require('webpack'),
-	path = require('path'),
+
+var fs = require('fs'),
+    path = require('path'),
+    precss = require('precss'),
+    webpack = require('webpack'),
+    pxtorem = require('postcss-px2rem'), 
+    assets = require('postcss-assets'),
+    fsArr = fs.readdirSync('./src'),
+    autoprefixer = require('autoprefixer'),
     HtmlWebpackPlugin = require('html-webpack-plugin'),
     ExtractTextPlugin = require('extract-text-webpack-plugin'),
-    cleanWebpackPlugin = require('clean-webpack-plugin'),
-    OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin'),
-    fs = require('fs'),
-    fsArr = fs.readdirSync('./src'),
-    cssMin,config;
+    cleanWebpackPlugin = require('clean-webpack-plugin');
+    OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+
+var cssMin,config;
 
 module.exports = function(env) {
-
     config = {
-        entry:{
-            vendor:path.resolve(__dirname,'src/js/public.jsx'),
-        },
-        resolve:{
-            extensions:['.js','.jsx','.less','.css','.min.js','.html'],
+        entry: ['webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000','./src/js/public.jsx'],
+        resolve: {
+            extensions: ['.js','.css','.min.js','.html','.jsx'],
             alias: {
                 Sy: path.resolve(__dirname, './src/style/'),
                 Img: path.resolve(__dirname, './src/images/')
             }
         },
-        devServer:{
-            historyApiFallback:true, 
-            stats:'errors-only',
-            overlay:{ 
-                errors:true,
-                warnings:true,
+        devtool:'cheap-module-eval-source-map',
+        devServer: {
+            historyApiFallback: true, 
+            stats: 'errors-only',
+            overlay: { 
+                errors: true,
+                warnings: true,
             }
         },
-        devtool: 'cheap-module-eval-source-map',
-        module:{
-            rules:[
+        module: {
+            rules: [
                 {
-                    test:/\.(js|jsx)$/,
-                    exclude: /(node_modules|bower_components)/,
+                    test: /\.(js|jsx)$/,
+                    exclude:path.resolve(__dirname, 'node_modules'),
                     use:[
                         {
-                            loader:'babel-loader',
-                            options:{
-                                presets: ['react', 'es2015']
+                            loader: 'babel-loader',
+                            options: {
+                                presets: ['env','react'],
+                                plugins: ['transform-runtime']
                             }
                         }
                     ]
                 },
                 {
-                    test:  /\.(png|jpe?g|gif)$/,
+                    test: /\.(png|jpe?g|gif|svg)$/,
                     use: [
                         {
-                            loader:'url-loader',
-                            options:{
-                                limit:'192',
-                                name:'images/[name].[ext]'
+                            loader: 'url-loader',
+                            options: {
+                                limit: '1000',
+                                name: 'images/[name].[ext]'
                             }
                         }
                     ]
                 },
                 {
-                    test:/\.html$/,
-                    use:[
+                    test: /\.html$/,
+                    use: [
                         {
-                            loader:'html-loader',
-                            options:{
+                            loader: 'html-loader',
+                            options: {
                                 minimize: true
                             }
                         }
                     ]
                 },
                 {
-                    test:path.resolve(__dirname, 'src/js/phonerm'),
-                    use:[
+                    test: path.resolve(__dirname, './src/js/phonerm'),
+                    use: [
                         {
-                            loader:'expose-loader',
-                            options:'Rem'
+                            loader: 'expose-loader',
+                            options: 'Rem'
                         }
                     ]
                 }
             ]
         },
         plugins: [
-                new webpack.optimize.UglifyJsPlugin({
-                    compress: {
-                        warnings: false
-                    }
-                }),
-                
-                new OptimizeCssAssetsPlugin(),
-                new webpack.ProvidePlugin({
-                    $:"jquery",
-                    jQuery:"jquery",
-                    "window.jQuery":"jquery"
-                })
+            new webpack.optimize.UglifyJsPlugin({
+                beautify: false,
+                comments: false,
+                compress: {
+                    warnings: false,
+                    reduce_vars: true
+                }
+            }),
+            new webpack.optimize.OccurrenceOrderPlugin(),
+            new webpack.HotModuleReplacementPlugin(),
+            new webpack.NoEmitOnErrorsPlugin(),
+            new webpack.ProvidePlugin({
+                $:"jquery",
+                jQuery:"jquery",
+                "window.jQuery":"jquery"
+            })
         ]
 
     }
@@ -108,41 +115,69 @@ module.exports = function(env) {
         config.plugins.push(new cleanWebpackPlugin(['./dist/']))
     }
 
-    if (env.production) { //生产模式
+    if (env.production) { 
         styles = {
-            test: /\.(less|css)$/, 
+            test: /\.css$/, 
             use:ExtractTextPlugin.extract({
                     fallback: "style-loader",
-                    use: [ 'css-loader', 'less-loader' ]
+                    loader: [ 
+                        'css-loader',
+                        {
+                            loader: 'postcss-loader',
+                            options: {
+                                plugins: function(){
+                                    return [
+                                        precss,
+                                        autoprefixer
+                                    ];
+                                }
+                            }
+                        }
+                        
+                    ]
                 }) 
         }
         config.output = {
             filename: 'js/[name].[chunkhash].js',
-            chunkFilename: "js/[name].[chunkhash].min.js"
+            chunkFilename: "js/[name].[chunkhash].min.js",
+            publicPath: env.baseUrl + '/',
         }
-        config.plugins.push(new ExtractTextPlugin({filename:'style/[name].[chunkhash].min.css',allChunks: true}));
-        config.module.rules.push(styles)
+        config.plugins.push(new ExtractTextPlugin({
+                filename:'style/[name].[chunkhash].min.css',
+                allChunks: true
+            }));
+        config.module.rules.push(styles);
+
     }else{
         styles = {
-            test: /\.(less|css)$/, 
-             use: [{
+            test: /\.css$/, 
+            use: [{
                 loader: "style-loader" 
-            }, {
+            },{
                 loader: "css-loader" 
-            }, {
-                loader: "less-loader" 
+            },{
+                loader: "postcss-loader",
+                options: {
+                    plugins: function(){
+                        return [
+                            precss,
+                            autoprefixer
+                        ];
+                    }
+                }
             }]
         }
         config.output = {
             filename: 'js/[name].js',
-            chunkFilename: "js/[name].[chunkhash:5].min.js"
+            publicPath: '/',
+            chunkFilename: "js/[name].min.js"
         }
         config.plugins.push(new webpack.DefinePlugin({
             'process.env': {
                 'NODE_ENV': JSON.stringify('development')
             }
         }))
-        config.module.rules.push(styles)
+        config.module.rules.push(styles);
     }
 
     config.output.path = path.resolve(__dirname,'dist');
@@ -150,9 +185,8 @@ module.exports = function(env) {
     fsArr.forEach(function(ele){
         if (/\.html$/.test(ele)) {
             config.plugins.push(new HtmlWebpackPlugin({
-                template:'./src/'+ele,
-                filename:ele,
-                chunks: ['vendor']
+                template: './src/'+ele,
+                filename: ele
             }))
         }
     });
@@ -167,4 +201,4 @@ module.exports = function(env) {
 
 
 
-	
+    

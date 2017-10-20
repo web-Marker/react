@@ -1,21 +1,34 @@
 import React, {Component, PropTypes} from 'react';
+import { connect } from 'react-redux';
 
-export default class Load extends Component {
+class Load extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			toggle: true
+			toggle:true
 		}
 	}
 
 	componentWillReceiveProps(nextProps){
+		const {fetchload, getload} = this.props;
 		
-		this.setState({
-			toggle:nextProps.toggle
-		})
+		if (fetchload != nextProps.fetchload) {
+			this.setState({
+				toggle: nextProps.fetchload
+			})
+		}
+
+		if (getload != nextProps.getload) {
+			this.setState({
+				toggle: nextProps.getload
+			})
+		}
+		
 	}
 
+
 	render(){
+		console.log('load',this.state.toggle)
 		return (
 			<div id="loadingToast" className={this.state.toggle ? '' : 'hide'}>
 			    <div className="weui-mask_transparent"></div>
@@ -27,3 +40,14 @@ export default class Load extends Component {
 		)
 	}
 }
+
+//上级给下级的props
+const mapStateToProps = (state) =>{
+	return {
+		fetchload: state.fetchData.fetchload,
+		getload: state.getData.getload
+	}
+}
+
+
+export default connect(mapStateToProps)(Load);

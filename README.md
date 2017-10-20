@@ -1,8 +1,5 @@
----
-typora-copy-images-to: ipic
----
 
-####技术栈
+#### 技术栈
 
 react + react-router + redux  + postcss + ES6/7 + webpack + fetch
 

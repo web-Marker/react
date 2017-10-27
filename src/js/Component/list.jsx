@@ -12,9 +12,10 @@ import Tool from '../Config/Tool';
 import { Link } from 'react-router'
 import { connect } from 'react-redux';
 import *as action from '../Redux/Action/Index';
+import { is, fromJS} from 'immutable';
+import immutable from 'immutable';
 import x3 from '../../images/xxicon3.png';
-
-
+console.log(immutable)
 class List extends Component {
 	
 	constructor(props) {
@@ -33,23 +34,26 @@ class List extends Component {
 	}
 
 	componentWillReceiveProps(nextProps){
-		console.log('nextProps',nextProps)
-		console.log(this.props.type)
-		if (this.props.jsons != nextProps.jsons) {
+		// console.log('nextProps',nextProps)
+		// console.log(this.props)
+		let {jsons, tablist, type, isdrop} = this.props;
+		if (!is(fromJS(jsons),fromJS(nextProps.jsons))) {
 			this.setState({
 				list: nextProps.jsons
 			})
+			console.log(nextProps.jsons)
 		}
 
-		if (this.props.tablist != nextProps.tablist) {
+		if (!is(fromJS(tablist),fromJS(nextProps.tablist))) {
 			this.setState({
 				list: nextProps.tablist
 			})
+			console.log(nextProps.tablist)
 		}
 
 		//|| (this.props.isdrop != nextProps.isdrop)
 		
-		if ((nextProps.type != this.props.type) || (nextProps.isdrop != this.props.isdrop)) {
+		if ((!is(fromJS(nextProps.type),fromJS(type))) || (!is(fromJS(nextProps.isdrop),fromJS(isdrop)))) {
 			if (nextProps.type) {
 				this.props.dispatch(action.newGetData({mod: 'getBidding',appid:'pengt'},'bidding',true, false))
 			}else{
@@ -58,9 +62,9 @@ class List extends Component {
 		}
 	}
 	
-
 	shouldComponentUpdate(nextProps, nextState){
-		return !(nextProps === this.props) || !(nextState === this.state);
+		return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state),fromJS(nextState))
+		console.log(!is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state),fromJS(nextState)))
 	}
 
 	componentWillMount() {
@@ -68,7 +72,6 @@ class List extends Component {
 		this.props.dispatch(action.fetchPosts(true, false))
 
 	}
-
 
 	
 	render(){
@@ -101,10 +104,11 @@ class List extends Component {
 
 //上级给下级的props
 const mapStateToProps = (state) =>{
+
 	return {
-		type: state.navTab.type,
-		jsons: state.fetchData.list,
-		tablist: state.getData.list,
+		type: state.navTab.toJS().type,
+		jsons: state.fetchData.toJS().list,
+		tablist: state.getData.toJS().list,
 		isdrop: state.setDrop.isdorp
 	}
 }

@@ -51,6 +51,7 @@ export const fetchPosts = (start, end) =>{
 				return;
 			}
 			dispatch(receivePosts(end, data.msg.data));
+			dispatch(newGetData(null, null, null, null, true));
 			// this.setState({
 			// 	list: Object.assign([], data.msg.data),
 			// })
@@ -60,6 +61,7 @@ export const fetchPosts = (start, end) =>{
 
 //发送请求开始
 export const getDataStart = (data) =>{
+	console.log(data)
 	return {
     	type: GET_DATA_START,
     	data
@@ -76,23 +78,30 @@ export const getDataSuccess = (data, json) =>{
 }
 
 //手动获取数据的action
-export const newGetData = (data, url, start, end) => {
-    return dispatch => {
-        dispatch(getDataStart(start));
-		Tool.ajax({
-			data:data,
-			url:url
-		}).then((data)=>{
-			console.log(data)
-			if (data.code == 100) {
-				alert('测试环境获取id有延迟,请再次刷新');
-				dispatch(getDataSuccess(start, {}));
-				return;
-			}
-			dispatch(getDataSuccess(end, data.data || data.msg.data));
-			
-		})
-    }
+export const newGetData = (data, url, start, end, loadchange) => {
+	if (loadchange) {
+		return dispatch=>{
+			dispatch(getDataStart(false))
+		};
+	}else{
+		return dispatch => {
+	        dispatch(getDataStart(start));
+			Tool.ajax({
+				data:data,
+				url:url
+			}).then((data)=>{
+				console.log(data)
+				if (data.code == 100) {
+					alert('测试环境获取id有延迟,请再次刷新');
+					dispatch(getDataSuccess(start, {}));
+					return;
+				}
+				dispatch(getDataSuccess(end, data.data || data.msg.data));
+				
+			})
+	    }
+	}
+    
 }
 
 //发起下拉刷新

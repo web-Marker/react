@@ -1,3 +1,9 @@
+### 前端架构web端redux预研以及实践小结（结合react框架）
+
+#### 预研目的
+
+- 为移动端webview加载的业务模块技术选型
+- view模块需要从多个来源获取数据，需要redux来管理数据状态
 
 #### 技术栈
 
@@ -5,11 +11,9 @@ react + react-router + redux  + postcss + ES6/7 + webpack + fetch
 
 > demo的服务器有时候是有问题，需要多刷新几次，我已经在alert里面阐明了问题。因为是测试环境。
 >
-> 后期还会更新两点
+> redux可以单独使用，但是结合react可以发挥它最大的数据状态管理优势
 >
-> 1.Immutable.js
->
-> 2.单元测试
+> 从react=>router=>redux来阐述一个一个完整项目的业务流程，体现redux的优势
 
 #### 项目使用
 
@@ -22,27 +26,26 @@ node server.js
 npm run production 发布命令 需要配置绝对地址域名 具体参考webpack.config.js
 ```
 
-#### 墨迹的一段话
+#### 环境
 
 > 本项目主要理解 react 和 redux 的原理，以及 react + redux 之间的配合方式，写一遍可以了解redux的数据传递机制。
 
-> 如果觉得不错的话，您可以点右上角 "Star" 支持一下 谢谢！ ^_^
-
-> 如有问题请直接在 Issues 中提，或者您发现问题并有非常好的解决方案，欢迎 PR 👍
-
 > 开发环境 macOS 10.12  Chrome 61.0.3163.100 nodejs 8.4.0
 
-### 个人感悟
+#### 针对redux最适合的框架react的总结
 
-	##### react是干啥的
+##### react是干啥的
+
 
 ​	React 创造了虚拟dom并且将它们储存起来，每当状态发生变化的时候就会创造新的虚拟节点和以前的进行对比，让变化的部分进行渲染。整个过程没有对dom进行获取和操作，只有一个渲染的过程，所以react说是一个ui框架。
 
-	##### 怎么玩react
+##### 怎么玩react
+
 
 ​	单独用react也行，数据层次不多的项目可以舍弃redux，如果不需要多单页面应用可以舍弃router，如果不想用node的热更新，可以舍弃node，webpack不想用，那就不能用es6/7，babel。只能用ES5并且页面引入react库。~~~这是最基本的玩法，纯加载react+jsx。不过你能找到github上面来，相信不是我说的这种低级需求了，最好全部你都要玩一遍，这样才算入了react家族的门。接着需要玩按需加载，react的单元测试，还有一个Immutable.js 优化redux写法的库，后期都要集成进来。
 
-	##### react的 Diff算法）
+##### react的 Diff算法
+
 
 ​	react的diff算法用在什么地方呢？当组件更新的时候，react会创建一个新的虚拟dom树并且会和之前储存的dom树进行比较，这个比较多过程就用到了diff算法，所以组件初始化的时候是用不到的。react提出了一种假设，相同的节点具有类似的结构，而不同的节点具有不同的结构。在这种假设之上进行逐层的比较，如果发现对应的节点是不同的，那就直接删除旧的节点以及它所包含的所有子节点然后替换成新的节点。如果是相同的节点，则只进行属性的更改。
 
@@ -52,7 +55,7 @@ npm run production 发布命令 需要配置绝对地址域名 具体参考webpa
 
 
 
-#### 组件的生命周期(图都是来自网上，同上下)
+#### 组件的生命周期
 
 
 
@@ -116,6 +119,8 @@ npm run production 发布命令 需要配置绝对地址域名 具体参考webpa
 
 还没玩过的可以参考阮一峰老师的日志 <http://www.ruanyifeng.com/blog/2016/05/react_router.html?utm_source=tool.lu> 
 
+以下是demo中Router的部分,充分利用了按需加载的特性,优化了性能。
+
 ```javascript
 import React, {Component, PropTypes} from 'react';
 import { Router, Route, Redirect, IndexRedirect, IndexRoute, browserHistory, hashHistory } from 'react-router';
@@ -159,7 +164,21 @@ const RouteConfig = (
 
 getComponent 载入组件属于动态加载，默认如果没有这个动态加载的需求可以component。需要在webpack配置chunkFilename。
 
+require.ensure是webpack里面按需加载的一个方法，后面的点default是兼容ES6的导出export导出方式。
+
 #### redux
+
+首先，redux并不是必须的，它的作用相当于在顶层组件之上又加了一个组件，作用是进行逻辑运算、储存数据和实现组件尤其是顶层组件的通信。如果组件之间的交流不多，逻辑不复杂，只是单纯的进行视图的渲染，这时候用回调，context就行，没必要用redux，用了反而影响开发速度。但是如果组件交流特别频繁，逻辑很复杂，那redux的优势就特别明显了。我第一次做react项目的时候并没有用redux，所有的逻辑都是在组件内部实现，当时为了实现一个逻辑比较复杂的购物车，洋洋洒洒居然写了800多行代码，回头一看我自己都不知道写的是啥，画面太感人。
+
+先简单说一下redux和react是怎么配合的。react-redux提供了connect和Provider两个好基友，它们一个将组件与redux关联起来，一个将store传给组件。组件通过dispatch发出action，store根据action的type属性调用对应的reducer并传入state和这个action，reducer对state进行处理并返回一个新的state放入store，connect监听到store发生变化，调用setState更新组件，此时组件的props也就跟着变化。
+
+##### 流程是这个样子的
+
+![WechatIMG2](https://ws4.sinaimg.cn/large/006tNc79gy1fkui132lukj30nl0cidgv.jpg)
+
+值得注意的是connect，Provider，mapStateToProps,mapDispatchToProps是react-redux提供的，redux本身和react没有半毛钱关系，它只是数据处理中心，没有和react产生任何耦合，是react-redux让它们联系在一起。
+
+
 
 #### 三部分组成：store，reducer，action。
 
@@ -264,13 +283,3 @@ mapDispatchToProps返回的对象其属性其实就是一个个actionCreator，�
 
 
 
-#### 最后说一下我玩react的心得
-
-1. 实践，从0开始。
-2. 刚开始别玩什么router,redux,热加载之类的(有一句话很经典，如果你不知道是否需要 Redux，那就是不需要它)，不需要的场景用了反而是累赘。
-3. react熟了,开始玩router吧，最后是结合redux，基本的全家桶会了。开始使用react延伸产品吧，让我们骑着猪也可以去旅行。
-4. 优化webpack配置加载，很重要，减少开发时间。
-5. 最后一点，往死里逼自己，写。
-6. 交流微信：
-
-![code](https://ws3.sinaimg.cn/large/006tKfTcgy1fkoxwvn61xj30cj0cvdmi.jpg)

@@ -1,10 +1,15 @@
 import React, {Component, PropTypes} from 'react';
 import { Link } from 'react-router'
+import { is, fromJS} from 'immutable';
 
 export default class Footer extends Component {
 
 	constructor(props) {
 		super(props)
+	}
+
+	shouldComponentUpdate(nextProps, nextState){
+		return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state),fromJS(nextState))
 	}
 
 	render(){

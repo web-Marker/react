@@ -1,9 +1,14 @@
 import React, {Component, PropTypes} from 'react';
 import Footer from './footer';
+import { is, fromJS} from 'immutable';
 
 export default class My extends Component {
 	constructor(props) {
 		super(props)
+	}
+
+	shouldComponentUpdate(nextProps, nextState){
+		return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state),fromJS(nextState))
 	}
 
 	render(){

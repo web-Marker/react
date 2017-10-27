@@ -1,6 +1,8 @@
 import React, {Component, PropTypes} from 'react';
 import { connect } from 'react-redux';
 import *as action from '../Redux/Action/Index';
+import { is, fromJS} from 'immutable';
+
 
 const el = document.body.classList;
 let num = 1;
@@ -89,7 +91,7 @@ class Drop extends Component {
 		}
 
 		this.pullToRefreshDone = () =>{
-
+			console.log("3")
 			el.remove("refreshing"); //移除
     		this.setState({
     			height:0
@@ -101,7 +103,7 @@ class Drop extends Component {
 
 	componentWillReceiveProps(nextProps){
 		console.log('drop',nextProps)
-		if (!nextProps.getload) {
+		if (!nextProps.getload && el.contains('refreshing')) {
 			this.pullToRefreshDone();
 		}
 	}
@@ -110,6 +112,10 @@ class Drop extends Component {
 		window.addEventListener('touchstart', this.handleStart.bind(this));
 		window.addEventListener('touchmove', this.handleMove.bind(this));
 		window.addEventListener('touchend', this.handleEnd.bind(this));
+	}
+
+	shouldComponentUpdate(nextProps, nextState){
+		return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state),fromJS(nextState))
 	}
 
 	render(){
@@ -131,7 +137,7 @@ class Drop extends Component {
 //上级给下级的props
 const mapStateToProps = (state) =>{
 	return {
-		getload: state.getData.getload
+		getload: state.getData.toJS().getload
 	}
 }
 

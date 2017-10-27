@@ -1,6 +1,10 @@
 import React, {Component, PropTypes} from 'react';
 import { Router, Route, Redirect, IndexRedirect, IndexRoute, browserHistory, hashHistory } from 'react-router';
 
+if (module.hot) {
+    module.hot.accept();
+}
+
 class Roots extends Component {
     render() {
         return (

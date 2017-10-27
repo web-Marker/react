@@ -1,6 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import Tool from '../Config/Tool';
 import { Link } from 'react-router'
+import { is, fromJS} from 'immutable';
 
 let imgAll=[],imgs=[],localId=[];
 
@@ -262,6 +263,10 @@ export default class Release extends Component {
 				console.log(this.state)
 			})
 		})
+	}
+
+	shouldComponentUpdate(nextProps, nextState){
+		return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state),fromJS(nextState))
 	}
 
 	render(){

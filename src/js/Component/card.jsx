@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import { browserHistory } from 'react-router';
 import { Link } from 'react-router'
-
+import { is, fromJS} from 'immutable';
 import Tool from '../Config/Tool';
 
 console.log(Tool)
@@ -71,6 +71,10 @@ export default class Card extends Component {
 				
 			}
 		})
+	}
+
+	shouldComponentUpdate(nextProps, nextState){
+		return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state),fromJS(nextState))
 	}
 
 	render(){

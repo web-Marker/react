@@ -1,8 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import { Link } from 'react-router'
 import Tool from '../Config/Tool';
-
-
+import { is, fromJS} from 'immutable';
 
 export default class MyCard extends Component {
 	constructor(props, context) {
@@ -24,6 +23,10 @@ export default class MyCard extends Component {
 			})
 		}
 
+	}
+
+	shouldComponentUpdate(nextProps, nextState){
+		return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state),fromJS(nextState))
 	}
 
 	componentWillMount() {

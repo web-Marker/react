@@ -6,10 +6,21 @@
 */
 
 import React, {Component, PropTypes} from 'react';
-import Navtab from './navtab'
-import List from './list'
-import Load from './load'
-import Drop from './drop'
+import {is, fromJS} from 'immutable';
+import Navtab from './navtab';
+import List from './list';
+import Load from './load';
+import Drop from './drop';
+
+if (module.hot) {
+	module.hot.accept();
+}
+
+var statrs = {'a':'s', 'b':'sd'};
+var formJSs = fromJS(statrs);
+var sets = formJSs.set('a','gs');
+console.log(formJSs)
+console.log(sets)
 
 export default class Index extends Component {
 

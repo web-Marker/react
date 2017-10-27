@@ -6,11 +6,16 @@
 */
 
 import React, {Component, PropTypes} from 'react';
+import { is, fromJS} from 'immutable';
 
 export default class Of extends Component {
 	constructor(props) {
 		super(props)
 
+	}
+
+	shouldComponentUpdate(nextProps, nextState){
+		return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state),fromJS(nextState))
 	}
 
 	render(){

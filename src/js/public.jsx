@@ -21,9 +21,7 @@ import './Config/phonerm';
 
 const url = 'https://api.pengt.com/';
 const str = 'from=308f23b7cada2828bb7ade10401aa5f8&uid=7&sign=04b29480233f4def5c875875b6bdc3b1';
-if (module.hot) {
-	module.hot.accept();
-}
+
 /**
  * *获取token
  * @return {[type]} [description]
@@ -47,6 +45,8 @@ if (process.env.NODE_ENV === 'development') {
 		localStorage.setItem('token',data.data.token);
 	});
 }
+
+
 
 store.subscribe(() => { //监听state变化
     console.log(store.getState())

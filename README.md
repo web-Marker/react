@@ -7,7 +7,7 @@
 
 #### 技术栈
 
-react + react-router + redux  + postcss + ES6/7 + webpack + fetch
+react + react-router + redux  + postcss + ES6/7 + webpack + fetch + immutable.js
 
 > demo的服务器有时候是有问题，需要多刷新几次，我已经在alert里面阐明了问题。因为是测试环境。
 >

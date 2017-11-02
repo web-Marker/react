@@ -1,9 +1,3 @@
-### 前端架构web端redux预研以及实践小结（结合react框架）
-
-#### 预研目的
-
-- 为移动端webview加载的业务模块技术选型
-- view模块需要从多个来源获取数据，需要redux来管理数据状态
 
 #### 技术栈
 
@@ -11,9 +5,6 @@ react + react-router + redux  + postcss + ES6/7 + webpack + fetch + immutable.js
 
 > demo的服务器有时候是有问题，需要多刷新几次，我已经在alert里面阐明了问题。因为是测试环境。
 >
-> redux可以单独使用，但是结合react可以发挥它最大的数据状态管理优势
->
-> 从react=>router=>redux来阐述一个一个完整项目的业务流程，体现redux的优势
 
 #### 项目使用
 

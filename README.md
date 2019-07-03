@@ -277,9 +277,6 @@ mapDispatchToProps返回的对象其属性其实就是一个个actionCreator，�
 其实connect函数并没有做什么，大部分的逻辑都是在它返回的wrapWithConnect函数内实现的，确切的说是在wrapWithConnect内定义的Connect组件里实现的。
 
 
-
-<<<<<<< HEAD
-=======
 #### 最后说一下我玩react的心得
 
 1. 实践，从0开始。
@@ -290,4 +287,3 @@ mapDispatchToProps返回的对象其属性其实就是一个个actionCreator，�
 6. 交流微信：
 
 ![code](https://ws3.sinaimg.cn/large/006tKfTcgy1fkoxwvn61xj30cj0cvdmi.jpg)
->>>>>>> 2f2ba3060350c45f7b7fe3297fbc3b8e86bfb7a9
